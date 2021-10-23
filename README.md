@@ -20,5 +20,5 @@ Every Thursday
 * Feedback
 * Respect
 # Architecture Diagram:
-![alt text](https://github.com/gopinathsjsu/team-project-avenghers/tree/Kesiya/blob/kesiya/images/Architecture_Dia.jpeg?raw=true)
+![alt text](https://github.com/gopinathsjsu/team-project-avenghers/blob/Kesiya/images/Architecture_Dia.jpeg?raw=true)
 # Sprint Sheet:
