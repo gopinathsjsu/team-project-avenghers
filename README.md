@@ -16,5 +16,8 @@ UI Icons - MaterialUI <br />
 # Scrum Meetings Schedule:
 Every Thursday
 # XP Core Values Selected:
+* Communication
+* Feedback
+* Respect
 # Architecture Diagram:
 # Sprint Sheet:
