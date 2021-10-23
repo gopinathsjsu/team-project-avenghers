@@ -14,7 +14,9 @@ Backend - NodeJS, ExpressJS <br />
 Database - MongoDB <br />
 UI Icons - MaterialUI <br />
 # Scrum Meetings Schedule:
-Every Thursday
+Every 
+* Thursday
+* Sunday
 # XP Core Values Selected:
 * Communication
 * Feedback
