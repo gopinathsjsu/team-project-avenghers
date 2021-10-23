@@ -21,3 +21,4 @@ Every Thursday
 * Respect
 # Architecture Diagram:
 # Sprint Sheet:
+https://docs.google.com/spreadsheets/d/1xxU6LDCaffmAD2h_JaAG_aT0KsaD3xWAomqDV9P2Qzw/edit#gid=0
