@@ -2,10 +2,10 @@
 team-project-avenghers created by GitHub Classroom
 # Airline Application (Team 4)
 # Team Members:
-1. Kesiya Raj 
-2. Kiran Bala Devineni
-3. Nancy Saxena
-4. Vasudha Pasumarthi
+* Kesiya Raj 
+* Kiran Bala Devineni
+* Nancy Saxena
+* Vasudha Pasumarthi
 # Tools and Languages:
 MERN Stack
 
@@ -13,6 +13,7 @@ Frontend - ReactJS <br />
 Backend - NodeJS, ExpressJS <br />
 Database - MongoDB <br />
 UI Icons - MaterialUI <br />
-# Scrum meetings schedule:
+# Scrum Meetings Schedule:
 Every Thursday
+# Architecture Diagram:
 
