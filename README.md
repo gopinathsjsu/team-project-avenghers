@@ -22,5 +22,6 @@ Every
 * Feedback
 * Respect
 # Architecture Diagram:
+![alt text](https://github.com/gopinathsjsu/team-project-avenghers/blob/Kesiya/images/Architecture_Dia.jpeg?raw=true)
 # Sprint Sheet:
 https://docs.google.com/spreadsheets/d/1xxU6LDCaffmAD2h_JaAG_aT0KsaD3xWAomqDV9P2Qzw/edit#gid=0
