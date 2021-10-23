@@ -15,5 +15,6 @@ Database - MongoDB <br />
 UI Icons - MaterialUI <br />
 # Scrum Meetings Schedule:
 Every Thursday
+# XP Core Values Selected:
 # Architecture Diagram:
-
+# Sprint Sheet:
