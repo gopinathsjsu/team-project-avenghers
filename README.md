@@ -9,10 +9,10 @@ team-project-avenghers created by GitHub Classroom
 # Tools and Languages:
 MERN Stack
 
-Frontend - ReactJS <br />
-Backend - NodeJS, ExpressJS <br />
-Database - MongoDB <br />
-UI Icons - MaterialUI <br />
+* Frontend - ReactJS <br />
+* Backend - NodeJS, ExpressJS <br />
+* Database - MongoDB <br />
+* UI Icons - MaterialUI <br />
 # Scrum Meetings Schedule:
 Every 
 * Thursday

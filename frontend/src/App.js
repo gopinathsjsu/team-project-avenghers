@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Homepage from './components/Homepage/Homepage'
 import SeatSelection from './components/SeatSelection/SeatSelection'
+import ViewReservation from './components/Customer/ViewReservations'
 
 
 import './App.css';
@@ -14,7 +15,7 @@ function App() {
         <Switch>
           <Route path="/" exact render={props => <Homepage {...props} />} />
           <Route path="/Seat" exact render={props => <SeatSelection {...props} />} />
-          
+          <Route path="/ViewReservation" exact render={props => <ViewReservation {...props} />} />
         </Switch>
       </Router>
     </div>
