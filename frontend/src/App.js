@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Homepage from './components/Homepage/Homepage'
 import SeatSelection from './components/SeatSelection/SeatSelection'
-import ViewReservation from './components/Customer/ViewReservations'
+import ViewReservation from './components/ChangeReservations/ViewReservations'
 
 
 import './App.css';
