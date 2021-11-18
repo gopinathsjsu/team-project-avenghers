@@ -292,6 +292,9 @@ export default function SeatSelection() {
                             <button onClick={e => handleSubmitDetails(e)} className="btn btn-info seatBT">
                                 Confirm Details
                             </button>
+                            <button onClick={e => handleSubmitDetails(e)} className="btn btn-info Skip">
+                                Skip
+                            </button>
                         </div>
                         <div className={arrowDown ? "activeArrow2" : "nonActive"}>
                             <FaAngleDoubleDown />
