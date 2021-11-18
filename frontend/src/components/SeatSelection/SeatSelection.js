@@ -292,7 +292,7 @@ export default function SeatSelection() {
                             <button onClick={e => handleSubmitDetails(e)} className="btn btn-info seatBT">
                                 Confirm Details
                             </button>
-                            <button onClick={e => handleSubmitDetails(e)} className="btn btn-info Skip">
+                            <button onClick={e => handleSubmitDetails(e)} className="btn btn-info seatBT    ">
                                 Skip
                             </button>
                         </div>
