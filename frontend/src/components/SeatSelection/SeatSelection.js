@@ -95,7 +95,7 @@ export default function SeatSelection() {
                                 <li className="row row--1">
                                     <ol className="seats" type="A">
                                       <Popup 
-                                       content={() => <p> 6 dollars </p>} 
+                                       content={() => <p> 6$ </p>} 
                                        basic
                                        trigger={
                                         <li className="seat">
@@ -105,7 +105,7 @@ export default function SeatSelection() {
                                        } />
 
 <Popup 
-                                       content={() => <p> 6 dollars </p>} 
+                                       content={() => <p> 6 $ </p>} 
                                        basic
                                        trigger={
                                         <li className="seat">
@@ -164,6 +164,8 @@ export default function SeatSelection() {
                                         <li className="seat">
                                             <input type="checkbox" disabled value="4A" id="4A" />
                                             <label htmlFor="4A">4A</label>
+                                                                                     
+                                        
                                         </li>
                                         <li className="seat">
                                             <input type="checkbox" value="4B" id="4B" />
