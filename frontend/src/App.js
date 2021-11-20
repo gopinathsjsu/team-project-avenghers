@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Homepage from './components/Homepage/Homepage'
 import SeatSelection from './components/SeatSelection/SeatSelection'
 import ViewReservation from './components/ChangeReservations/ViewReservations'
+
 import Account from './components/Account/account'
 
 import './App.css';
