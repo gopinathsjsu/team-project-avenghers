@@ -7,6 +7,8 @@ import ViewReservation from './components/ChangeReservations/ViewReservations'
 
 import Account from './components/Account/account'
 
+import Register from './components/Register/register'
+
 import './App.css';
 
 function App() {
@@ -15,6 +17,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact render={props => <Homepage {...props} />} />
+          <Route path="/register" render={props => <Register {...props} />} />
           <Route path="/Seat" exact render={props => <SeatSelection {...props} />} />
           <Route path="/ViewReservation" exact render={props => <ViewReservation {...props} />} />
           <Route path="/account" exact render={props => <Account {...props} />} />
