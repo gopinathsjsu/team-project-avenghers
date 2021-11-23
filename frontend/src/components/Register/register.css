@@ -1,8 +1,14 @@
-/* .container {
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-} */
+.container {
+    margin-top: 40px;
+}
+.container form {
+    min-width: 32%;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 0 40px 0 #0a0a0a;
+    /* height: 542px; */
+    padding: 30px;
+}
 
 .form-container-in {
     box-shadow: 0 0 40px 0 #000000;
@@ -100,7 +106,8 @@ p.lead {
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.4);
 }
 
-.btnn>span, .btnn-icon>i {
+.btnn>span,
+.btnn-icon>i {
     float: left;
     padding: 13px;
     -webkit-transition: all .5s;
@@ -144,7 +151,8 @@ p.lead {
     right: -15px
 }
 
-.btnn-icon:hover>i, .btnn-icon:focus>i {
+.btnn-icon:hover>i,
+.btnn-icon:focus>i {
     color: #FFF;
 }
 
@@ -235,10 +243,9 @@ input.form-submit {
 
 .signuptext {
     color: green;
-    position: relative;
     left: 100%;
     top: -19px;
-    padding-right: 10px;
+    padding-left: 10px;
     cursor: pointer;
 }
 
@@ -262,6 +269,7 @@ input.form-submit {
 .sgnUp {
     margin-left: 0;
 }
-.pdding{
-    padding-left:0;
+
+.pdding {
+    padding-left: 0;
 }
