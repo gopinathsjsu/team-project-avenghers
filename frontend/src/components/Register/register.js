@@ -24,9 +24,9 @@ export default function Signup({ history }) {
     }
 
     return (
-        <div className="container">
+        <div className="container" style={{marginTop: "40px"}}>
             <div className="col-md-12" style={{display: "flex"}}>
-                <form onSubmit={e => submitData(e)}>
+                <form className="rform" onSubmit={e => submitData(e)}>
                     <h2 style={{margin: "10px 20px"}}>Register</h2>
                     <div className="form-group2">
                         <label htmlFor="name">Name:</label>

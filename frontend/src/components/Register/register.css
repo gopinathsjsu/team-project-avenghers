@@ -1,7 +1,4 @@
-.container {
-    margin-top: 40px;
-}
-.container form {
+.container .rform {
     min-width: 32%;
     margin: 0 auto;
     background: white;
