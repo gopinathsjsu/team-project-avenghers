@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,400i,700");
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.profile {
+    padding: 30px 30px;
+}
+
+.header {
+    min-height: 60vh;
+    background: rgba(205, 207, 207, 0.637);
+    background: linear-gradient(to right, rgba(236, rgba(162, 0, 255, 0.719), 0.658), #009FFF);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.45);
+    color: #333;
+}
+
+.details {
+    text-align: center;
+}
+
+.profile-pic {
+    height: 6rem;
+    width: 6rem;
+    object-fit: center;
+    border-radius: 10%;
+    border: 2px solid #fff;
+}
+
+.location p {
+    display: inline-block;
+}
+
+.location svg {
+    vertical-align: middle;
+}
+
+.stats {
+    display: flex;
+}
+
+.col-3 {
+    width:20rem;
+    text-align:center;   
+}
+.btn-primary {
+    width:125px;
+    height:35px;
+}
+.heading {
+    font-weight: 400;
+    font-size: 1.3rem;
+    margin: 1rem;
+    text-transform: uppercase;
+    width: 58rem;
+}
+
+.stat2 {
+    display: flex;
+}
+
+.stat2 .col-12 {
+    width: 05rem;
+    text-align: center; 
+}
+.btn-info{
+    width:05rem;
+    height:30px;
+    text-align: center; 
+
+}
+.bck {
+    background-color: rgba(208, 211, 214, 0.637) !important;
+}
