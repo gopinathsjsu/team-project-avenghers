@@ -21,4 +21,5 @@ async function createDefaultAdminIfNotExist() {
     }
     let newUser = new User(user)
     await newUser.save();
+    console.log("Default Admin with Email `admin@team.com` Created")
 }
