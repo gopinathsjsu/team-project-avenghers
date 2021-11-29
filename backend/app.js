@@ -1,11 +1,27 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const mongoose = require('mongoose');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+
 const cors = require('cors')
 
 
-var app = express();
+const app = express();
+
+//DB Config
+const DB_URL = require('./config/keys').MongoURI;
+
+//------------------Connect To MongoDB---------------------------
+mongoose.connect(DB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log("Connected to MongoDB")
+}).catch(err => {
+    throw err
+});
+//---------------------------------------------
 
 app.use(logger('dev'));
 app.use(express.json());
