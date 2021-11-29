@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const seed = require("./seed");
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -16,8 +17,9 @@ const DB_URL = require('./config/keys').MongoURI;
 mongoose.connect(DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-}).then(() => {
-    console.log("Connected to MongoDB")
+}).then(async () => {
+    console.log("Connected to MongoDB");
+    await seed();
 }).catch(err => {
     throw err
 });

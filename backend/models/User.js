@@ -27,8 +27,9 @@ const UserSchema = new Schema({
         required: true
     },
     mileage: {
-        type: String,
-        required: true
+        type: Number,
+        required: true,
+        default: 0
     },
     role: {
         type: Number,
@@ -37,6 +38,6 @@ const UserSchema = new Schema({
     }
 })
 
-const User = mongoose.model('user', UserSchema)
+const User = mongoose.model('User', UserSchema)
 
 module.exports = User;
