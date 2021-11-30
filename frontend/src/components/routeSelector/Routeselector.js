@@ -1,9 +1,19 @@
 import React, { useState } from 'react'
 import './Routeselector.css'
 import * as apiCall from './routeApifunc'
-import BusList from '../BusList/BusList'
+import FlightList from '../FlightList/FlightList'
+const mockFlightList = [
+    {
+        _id: "1",
+        seatArray: "",
+        companyName: "Airlines",
+        startCity: "Hyderabad",
+        destination: "Chennai",
+        pricePerSeat: "1800"
+    }
+]
 export default function Routeselector() {
-    const [dataInp, setData] = useState("")
+    const [dataInp, setData] = useState(mockFlightList)
     const [startCity, setStartCity] = useState('')
     const [destination, setDestination] = useState('')
     const handleToCity = e => {
@@ -11,9 +21,9 @@ export default function Routeselector() {
         setDestination({ destination: e.target.value })
         localStorage.setItem("destination", e.target.value)
     }
-    const renderBusList = (dataInp) => {
+    const renderFlightList = (dataInp) => {
         if (Object.keys(dataInp).length > 0) {
-            return (<BusList value={dataInp} />)
+            return (<FlightList value={dataInp} />)
         }
     }
     const handleFromCity = e => {
@@ -26,11 +36,11 @@ export default function Routeselector() {
     const getRoutes = e => {
         e.preventDefault()
         // console.log(startCity,destination)
-        apiCall.getRoutesFromApi(startCity.startCity, destination.destination)
-            .then(response => response.data)
-            .then(data => {
-                setData(data.bus)
-            })
+        // apiCall.getRoutesFromApi(startCity.startCity, destination.destination)
+        //     .then(response => response.data)
+        //     .then(data => {
+        //         setData(data.bus)
+        //     })
     }
 
     const handleDate = e => {
@@ -38,7 +48,7 @@ export default function Routeselector() {
         //    console.log(e.target.value)
         localStorage.setItem("date", e.target.value)
     }
-    
+
     return (
         <div className="rdc">
             <div className="form-group inline"></div>
@@ -62,7 +72,7 @@ export default function Routeselector() {
                 </form>
 
                 <div>
-                    {renderBusList(dataInp)}
+                    {renderFlightList(dataInp)}
                 </div>
             </div>
         </div>
