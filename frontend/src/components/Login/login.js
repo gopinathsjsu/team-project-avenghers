@@ -6,6 +6,7 @@ import { FaFacebookF, FaTwitterSquare } from "react-icons/fa";
 export default function Login({ history }) {
 
     let [userData, setUserData] = useState({})
+    let [errorMessage, setErrorMessage] = useState("");
 
     const getToSignUp = e => {
         e.preventDefault()
@@ -13,7 +14,7 @@ export default function Login({ history }) {
     }
     const handleChangeEvent = (e, title) => {
         let value = e.target.value
-        // setUserData({ ...userData, [title]: value })
+        setUserData({ ...userData, [title]: value })
     }
 
     const submitData = e => {
@@ -24,6 +25,9 @@ export default function Login({ history }) {
                 let { token } = data
                 sessionStorage.setItem('authToken', token)
                 history.push('/routes')
+            }).catch(e => {
+                setErrorMessage("Login Failed!");
+                setTimeout(() => { setErrorMessage("") }, 2500);
             })
     }
 
@@ -38,19 +42,20 @@ export default function Login({ history }) {
                             <div className="form-area login-form">
                                 <div className="form-input">
                                     <h2>Enter Login Credentials</h2>
+                                    <h4 style={{ margin: "10px 20px", color: "red" }}>{errorMessage}</h4>
                                     <form onSubmit={(e) => { submitData(e) }}>
-                                        <div class="form-group">
+                                        <div className="form-group">
                                             <input className="loginInfo" type="email" name="name" required onChange={e => handleChangeEvent(e, 'email')} />
                                             <label>Email-Id</label>
                                         </div>
-                                        <div class="form-group">
+                                        <div className="form-group">
                                             <input className="loginInfo" type="password" name="password" required onChange={e => handleChangeEvent(e, 'password')} />
                                             <label>password</label>
                                         </div>
-                                        <div class="myform-button">
+                                        <div className="myform-button">
                                             <button type="submit" className="myform-btn">Login</button>
                                         </div>
-                                        <div style={{marginTop: "20px"}}>
+                                        <div style={{ marginTop: "20px" }}>
                                             <small className="form-text text-muted signup-text">New User?
                                             </small>
                                             <span className="signUPtext"><a href="/#" onClick={(e) => getToSignUp(e)}>Sign-Up</a></span>
