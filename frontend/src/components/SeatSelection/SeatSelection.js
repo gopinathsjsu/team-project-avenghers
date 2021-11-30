@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
+import { Popup } from 'semantic-ui-react'
+
 import { FaAngleDoubleDown } from "react-icons/fa";
+import { OverlayTrigger } from 'react-bootstrap';
 import './Tab.css'
 export default function SeatSelection() {
     const [name, setName] = useState([])
@@ -84,21 +87,38 @@ export default function SeatSelection() {
     }
     return (
         <div className="ss">
-            <div className="row">
-                <div className="column1">
+            <div className="row" style={{width: '1200px', display: 'flex'}}>
+                <div className="column" style={{width: '60%'}}>
                     <div className="plane">
                         <form onChange={e => getSeatNumber(e)}>
                             <ol className="cabin fuselage">
                                 <li className="row row--1">
                                     <ol className="seats" type="A">
+                                      <Popup 
+                                       content={() => <p> 6$ </p>} 
+                                       basic
+                                       trigger={
                                         <li className="seat">
-                                            <input type="checkbox" disabled value="1A" id="1A" />
-                                            <label htmlFor="1A">1A</label>
+                                        <input type="checkbox" disabled value="1A" id="1A" />
+                                        <label htmlFor="1A">1A</label>
                                         </li>
+                                       } />
+
+<Popup 
+                                       content={() => <p> 6 $ </p>} 
+                                       basic
+                                       trigger={
                                         <li className="seat">
-                                            <input type="checkbox" id="1B" value="1B" />
-                                            <label htmlFor="1B">1B</label>
-                                        </li>
+                                        <input type="checkbox" id="1B" value="1B" />
+                                        <label htmlFor="1B">1B</label>
+                                    </li>
+                                       } />
+
+                                         
+                                   
+                                         
+                                      
+                                  
                                         <li className="seat">
                                             <input type="checkbox" value="1C" id="1C" />
                                             <label htmlFor="1C">1C</label>
@@ -144,6 +164,8 @@ export default function SeatSelection() {
                                         <li className="seat">
                                             <input type="checkbox" disabled value="4A" id="4A" />
                                             <label htmlFor="4A">4A</label>
+                                                                                     
+                                        
                                         </li>
                                         <li className="seat">
                                             <input type="checkbox" value="4B" id="4B" />
@@ -261,7 +283,7 @@ export default function SeatSelection() {
                         </form>
                     </div>
                 </div>
-                <div className="column2">
+                <div className="column" style={{flexBasis: '35%'}}>
                     <div className="seatInfo">
                         <form className="form-group">
                             {renderPassengerData(seatNumber)}
@@ -269,6 +291,9 @@ export default function SeatSelection() {
                         <div>
                             <button onClick={e => handleSubmitDetails(e)} className="btn btn-info seatBT">
                                 Confirm Details
+                            </button>
+                            <button onClick={e => handleSubmitDetails(e)} className="btn btn-info seatBT">
+                                Skip
                             </button>
                         </div>
                         <div className={arrowDown ? "activeArrow2" : "nonActive"}>
