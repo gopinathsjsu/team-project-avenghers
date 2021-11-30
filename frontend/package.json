@@ -3,18 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/data-grid": "^4.0.0-alpha.37",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.60",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.24.0",
     "bootstrap": "^3.4.1",
+    "file-saver": "^2.0.5",
     "jwt-decode": "^3.1.2",
+    "material-table": "^1.69.3",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.2",
+    "react-confirm-alert": "^2.7.0",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^4.0.3",
     "semantic-ui-react": "^2.0.4",
     "web-vitals": "^1.0.1"
   },
@@ -41,5 +48,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "author": "Nancy <nancy.saxena@sjsu.edu> (https://your-url.com)",
+  "license": "ISC"
 }
