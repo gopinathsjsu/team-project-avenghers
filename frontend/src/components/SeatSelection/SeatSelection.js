@@ -78,7 +78,7 @@ export default function SeatSelection(props) {
     }
 
     const handleSkipDetails = () => {
-        props.history.push('/PaymentTab')
+                    props.history.push('/PaymentTab')
 
 
     }
