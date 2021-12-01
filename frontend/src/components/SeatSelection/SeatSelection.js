@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
-import { Popup } from 'semantic-ui-react'
+import { Popup, Button } from 'semantic-ui-react'
+import axios from 'axios';
 
 import { FaAngleDoubleDown } from "react-icons/fa";
 import { OverlayTrigger } from 'react-bootstrap';
 import './Tab.css'
-export default function SeatSelection() {
+export default function SeatSelection(props) {
     const [name, setName] = useState([])
     const [arrowDown, setArrowDown] = useState(false)
     const [gender, setGender] = useState([])
     const [reservedSeat, setReservedSeat] = useState(["1A", "2A", "2B", "3B", "4A", "5C", "6A", "7B", "7C", '8B', "9B", "9C"])
-    const [seatNumber, setSeatnumber] = useState([])
+    const [seatNumber, setSeatnumber] = useState([]);
+    const [price, setPrice] = useState();
     // const [passengers, setPassengers] = useState([])
     // useEffect(()=>{
     //     let bId = localStorage.getItem('selectedBusId')
@@ -63,11 +65,37 @@ export default function SeatSelection() {
         setArrowDown(true)
         localStorage.setItem("reservedSeats", JSON.stringify(seatNumber))
         localStorage.setItem("nameData", JSON.stringify(name))
-        console.log(name)
-        console.log(gender)
+        const payload = {
+            name: name.pop(),
+            gender: gender.pop(),
+            seatNumber: seatNumber.pop(),
+            price,
+        }
+
+        submitSeatDetails(payload)
+       ;
+
+    }
+
+    const handleSkipDetails = () => {
+        props.history.push('/PaymentTab')
+
+
+    }
+
+    const submitSeatDetails = (payload) => {
+        axios.post('http://localhost:8080/seat', {
+            ...payload,
+        }).then((res) => {
+            console.log('res', res);
+            props.history.push('/PaymentTab')
+        }).catch((err) => {
+            console.log('err', err);
+        })
     }
 
     const renderPassengerData = (seatArray) => {
+        debugger;
         return seatArray.map((seat, idx) => {
             return (
                 <form key={idx} className="form seatfrm">
@@ -81,48 +109,55 @@ export default function SeatSelection() {
                         <input class="form-check-input" type="radio" name="gender" id="female" value="Female" onClick={e => handleGender(e, seat)} />
                         <label class="form-check-label" htmlFor="female">Female</label>
                     </div>
+                    <div class="form-check form-check-inline">
+                        <p class="text-capitalize text-center">Additional Price:{price}</p>
+                    </div>
                 </form>)
 
         })
     }
     return (
         <div className="ss">
-            <div className="row" style={{width: '1200px', display: 'flex'}}>
-                <div className="column" style={{width: '60%'}}>
+            <div className="row" style={{ width: '1200px', display: 'flex' }}>
+                <div className="column" style={{ width: '60%' }}>
                     <div className="plane">
                         <form onChange={e => getSeatNumber(e)}>
                             <ol className="cabin fuselage">
                                 <li className="row row--1">
                                     <ol className="seats" type="A">
-                                      <Popup 
-                                       content={() => <p> 6$ </p>} 
-                                       basic
-                                       trigger={
-                                        <li className="seat">
-                                        <input type="checkbox" disabled value="1A" id="1A" />
-                                        <label htmlFor="1A">1A</label>
-                                        </li>
-                                       } />
 
-<Popup 
-                                       content={() => <p> 6 $ </p>} 
-                                       basic
-                                       trigger={
                                         <li className="seat">
-                                        <input type="checkbox" id="1B" value="1B" />
-                                        <label htmlFor="1B">1B</label>
-                                    </li>
-                                       } />
-
-                                         
-                                   
-                                         
-                                      
-                                  
-                                        <li className="seat">
-                                            <input type="checkbox" value="1C" id="1C" />
-                                            <label htmlFor="1C">1C</label>
+                                            <input type="checkbox" disabled value="1A" id="1A" />
+                                            <label htmlFor="1A">1A</label>
                                         </li>
+
+
+                                        <Popup
+                                            content={() => <p> 6 $ </p>}
+                                            basic
+                                            trigger={
+                                                <li className="seat">
+                                                    <input type="checkbox" id="1B" value="1B" />
+                                                    <label htmlFor="1B">1B</label>
+                                                </li>
+                                            } />
+
+
+
+
+                                        <Popup
+                                            content={() => <p> 4$ </p>}
+                                            basic
+                                            trigger={
+                                                <li className="seat" onClick={() => setPrice('4 Dollars')}>
+                                                    <input type="checkbox" value="1C" id="1C" />
+                                                    <label htmlFor="1C">1C</label>
+                                                </li>
+
+                                            }
+                                        />
+
+
                                     </ol>
                                 </li>
                                 <li className="row row--2">
@@ -144,7 +179,7 @@ export default function SeatSelection() {
                                 </li>
                                 <li className="row row--3">
                                     <ol className="seats" type="A">
-                                        <li className="seat">
+                                        <li className="seat"  onClick={() => setPrice('5 Dollars')}>
                                             <input type="checkbox" value="3A" id="3A" />
                                             <label htmlFor="3A">3A</label>
                                         </li>
@@ -164,8 +199,8 @@ export default function SeatSelection() {
                                         <li className="seat">
                                             <input type="checkbox" disabled value="4A" id="4A" />
                                             <label htmlFor="4A">4A</label>
-                                                                                     
-                                        
+
+
                                         </li>
                                         <li className="seat">
                                             <input type="checkbox" value="4B" id="4B" />
@@ -283,18 +318,18 @@ export default function SeatSelection() {
                         </form>
                     </div>
                 </div>
-                <div className="column" style={{flexBasis: '35%'}}>
+                <div className="column" style={{ flexBasis: '35%' }}>
                     <div className="seatInfo">
                         <form className="form-group">
                             {renderPassengerData(seatNumber)}
                         </form>
-                        <div>
-                            <button onClick={e => handleSubmitDetails(e)} className="btn btn-info seatBT">
+                        <div style={{display: 'flex', flexDirection: 'row'}}>
+                            <Button onClick={e => handleSubmitDetails(e)} >
                                 Confirm Details
-                            </button>
-                            <button onClick={e => handleSubmitDetails(e)} className="btn btn-info seatBT">
+                            </Button>
+                            <Button onClick={e => handleSkipDetails()}>
                                 Skip
-                            </button>
+                            </Button>
                         </div>
                         <div className={arrowDown ? "activeArrow2" : "nonActive"}>
                             <FaAngleDoubleDown />

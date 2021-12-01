@@ -1,3 +1,18 @@
+//var express = require('express');
+//var path = require('path');
+//var cookieParser = require('cookie-parser');
+//var logger = require('morgan');
+//const cors = require('cors')
+//const airPlaneRouter = require('./routes/routeSelection');
+const mongoose = require('mongoose');
+const mongoo = require('./config/keys');
+console.log('mongooo', mongoo)
+
+//establish mongoose connection
+mongoose.connect(mongoo.MongoURI, {useNewUrlParser: true});
+const db = mongoose.connection;
+db.on('error', () => console.log('dbError', error));
+db.once('open', () => console.log('connection established'));
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -5,7 +20,7 @@ const cors = require('cors');
 const passport = require('passport');
 
 const express = require('express');
-const mongoose = require('mongoose');
+//const mongoose = require('mongoose');
 const seed = require("./seed");
 const bookTickets = require("./routes/bookTickets")
 
@@ -42,6 +57,10 @@ const loginRouter = require('./routes/login');
 app.use('/', loginRouter);
 
 app.use('/register', registerRouter);
+
+const seatRouter = require('./routes/seatSelection');
+ app.use('/seat', seatRouter)
+
 
  app.post('/bookTicket', function (req, res) {
     let payload = req.body

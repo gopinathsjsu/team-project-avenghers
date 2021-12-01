@@ -3,12 +3,7 @@ var router = express.Router();
 var Airplane = require('../models/Airplanes');
 
 
-// router.get('/', (req, res) => {
-//     bus.find({ companyName, startCity, totalseats, availableseats }, (err, result) => {
-//         if (err) res.send(err)
-//         else res.json({ result })
-//     })
-// })
+
 
 router.post('/', (req, res) => {
 
@@ -18,6 +13,7 @@ router.post('/', (req, res) => {
         }
         else res.json({ bus })
     })
+    //comment
 })
 
 router.post('/', (req, res) => {
