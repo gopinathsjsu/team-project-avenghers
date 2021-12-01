@@ -29,6 +29,6 @@ const AirplaneSchema = new Schema({
     }
 }, {collection: "Airplanes"})
 
-const bus = mongoose.model('Airplane', AirplaneSchema)
+const Airplane = mongoose.model('Airplane', AirplaneSchema)
 
 module.exports = Airplane;
