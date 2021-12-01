@@ -10,9 +10,6 @@ import Register from './components/Register/register'
 import RouteSelection from './components/RouteSelection/RouteSelection'
 import PaymentTab from './components/PaymentTab/PaymentTab'
 import TicketPage from './components/TicketPage/TicketPage'
-
-
-
 import './App.css';
 
 function App() {

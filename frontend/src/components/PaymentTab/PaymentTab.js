@@ -77,13 +77,36 @@ export default class App extends React.Component {
     };
 
 
-
-
-
     moveToTicketPage = (e) => {
         e.preventDefault()
-        localStorage.setItem("paymentData", JSON.stringify(this.state.token))
-        window.location.href = "/getTicket"
+
+        localStorage.setItem("paymentData", JSON.stringify(this.state.formData))
+        console.log(localStorage)
+        console.log(this.state)
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                "firstname": "Amir",
+                "lastname": "Khan",
+                "emailid": "ak@123",
+                "bookingstatus": "confirmed",
+                "date": localStorage.getItem("date"),
+                "flightnumber": "EK 230",
+                "MilesCovered": "350",
+                "PriceofTicket": "100",
+                "SeatNumber": localStorage.getItem("reservedSeats"),
+                "SkywardMiles": "35",
+                "Tripstatus": "Booked",
+                "destination": localStorage.getItem("start"),
+                "flightname": "Boeing 737",
+                "startcity": localStorage.getItem("destination")
+            })
+        };
+        fetch('http://localhost:8080/bookTicket', requestOptions)
+           .then(response => response.json())
+            .then(data => this.setState({ postId: data.id }));
+       // window.location.href = "/getTicket"
     }
 
     renderNamesOfPassenger = () => {
@@ -101,7 +124,7 @@ export default class App extends React.Component {
     renderSeatNumbers = () => {
         let seatArray = localStorage.getItem('reservedSeats')
         if (seatArray) {
-            let seaArr = JSON.parse(seatArray)
+            let seaArr = JSON.parse(seatArray);
             return seaArr.map((seat, idx) => {
                 return (
                     <span key={idx}>{seat}</span>
@@ -258,7 +281,8 @@ export default class App extends React.Component {
                                     <p className="hdng">To</p>
                                     <hr className="hr3" />
                                     <p className="hdng">Passengers</p>
-                                    <p className="usrName">Username</p>
+                                    <hr className="hr3" />
+                                    <p className="hdng">Seat</p>
                                     <hr className="hr3" />
                                     <p className="hdng">Ticket price</p>
                                     <p className="hdng">Payment through miles</p>
@@ -267,13 +291,15 @@ export default class App extends React.Component {
 
                                 </div>
                                 <div className="col-md-6">
-                                    <p className="usrName">Username</p>
+                                    <p className="usrName">{localStorage.getItem("nameData")}</p>
                                     <hr className="hr3" />
-                                    <p className="usrName">10/12/2021</p>
+                                    <p className="usrName">{localStorage.getItem("date")}</p>
                                     <p className="usrName">{localStorage.getItem("start")}</p>
                                     <p className="usrName">{localStorage.getItem("destination")}</p>
                                     <hr className="hr3" />
-                                    <p className="hdng">Seat No </p>
+                                    <p className="usrName">{localStorage.getItem("nameData")}</p>
+                                    <hr className="hr3" />
+                                    <p className="hdng">{localStorage.getItem("seat")} </p>
                                     {this.renderSeatNumbers()}
                                     
                                     <p>{this.getSumTotal()}</p>
