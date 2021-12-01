@@ -5,12 +5,17 @@ import jwt_decode from 'jwt-decode'
 export default function Account({ history }) {
 
     const [token, setToken] = useState({})
+
+    const  moveToreservation = (e) => {
+        e.preventDefault()
+        window.location.href = "/Viewreservation"
+    }
     
     const goBackToRoutes = e => { 
         e.preventDefault()
         history.push('/ViewReservation')
     }
-
+ 
 
     return (
         <div className="container">
@@ -31,7 +36,7 @@ export default function Account({ history }) {
                             <button className="btn btn-primary" onClick={() => ('Right button pressed')}>Skywards Miles</button> 
                             </div>
                             <div className="col-3">
-                                <button className="btn btn-primary" onClick={() => ('Right button pressed')}>Current Trips</button>  
+                                <button className="btn btn-primary" onClick={(e) => moveToreservation(e)}>Current Trips</button>  
                             </div>
                             <div className="col-3">
                                 <button className="btn btn-primary" onClick={() => ('Right button pressed')}>Past Trips</button>  
