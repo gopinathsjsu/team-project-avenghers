@@ -13,12 +13,9 @@ router.get('/', (req, res) => {
 
 router.post('/', bodyParser.json(), async (req, res) => {
 
-    const isExist = await User.findOne({ email: req.body.email, role: 0 });
-    if (isExist) {
-        res.status(500).json({ error: "Email already exist!" });
-        return;
-    }
     try {
+        const isExist = await User.findOne({ email: req.body.email, role: 0 });
+        if (isExist) throw new Error("Email already exist!");
 
         //Hash Password 
         const hashPassword = await bcrypt.hash(req.body.password, 10)
@@ -29,13 +26,14 @@ router.post('/', bodyParser.json(), async (req, res) => {
             password: hashPassword,
             mobile: req.body.mobile,
             gender: req.body.gender,
-            dob: moment(req.body.dob).format('YYYY-MM-DD')
+            dob: moment(req.body.dob, "DD-MM-YYYY").format('YYYY-MM-DD')
         }
         let newUser = new User(user)
         await newUser.save();
-        res.status(201).json({ result: newUser });
+
+        res.json({ status: true });
     } catch (e) {
-        res.status(500).json({ error: e.message });
+        res.json({ status: false, error: e.message });
     }
 });
 
