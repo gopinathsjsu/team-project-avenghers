@@ -1,5 +1,5 @@
 const {MongoClient} = require('mongodb');
-const { booktickets } = require('../routes/bookTickets');
+
 let retVal= [];
 async function main(params,payload) {
     const uri = require('./keys').MongoURI;
