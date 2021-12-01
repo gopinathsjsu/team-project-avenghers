@@ -1,8 +1,8 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-const cors = require('cors')
+//var express = require('express');
+//var path = require('path');
+//var cookieParser = require('cookie-parser');
+//var logger = require('morgan');
+//const cors = require('cors')
 //const airPlaneRouter = require('./routes/routeSelection');
 const mongoose = require('mongoose');
 const mongoo = require('./config/keys');
@@ -20,7 +20,7 @@ const cors = require('cors');
 const passport = require('passport');
 
 const express = require('express');
-const mongoose = require('mongoose');
+//const mongoose = require('mongoose');
 const seed = require("./seed");
 
 const app = express();
