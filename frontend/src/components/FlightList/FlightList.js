@@ -45,7 +45,7 @@ export default function FlightList({ value: dataInp }) {
                         <div class="w-100 d-none d-md-block"></div>
 
                         {/* {console.log(bus.seatArray)} */}
-                        <div class="col-5 col-sm-3 mb-4">{bus.companyName}</div>
+                        <div class="col-5 col-sm-3 mb-4">{bus.CompanyName}</div>
                         <div class="col-5 col-sm-3 mb-4">{bus.startCity}</div>
                         <div class="col-5 col-sm-3 mb-4">{bus.destination}</div>
                         <div class="col-5 col-sm-3 mb-4">{bus.pricePerSeat}</div>

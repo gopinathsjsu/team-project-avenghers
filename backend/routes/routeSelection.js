@@ -1,39 +1,27 @@
-var express = require('express');
-var router = express.Router();
-var Airplane = require('../models/Airplanes');
+const express = require('express');
+const router = express.Router();
+const Airplane = require('../models/Airplanes');
 
+router.post('/', async (req, res) => {
 
-
-
-router.post('/', (req, res) => {
-
-    bus.find({ 'startCity': req.body.startCity, 'destination': req.body.destination }).exec((err, bus) => {
-        if (err) {
-            res.json({ status: false, message: "error while searching" })
-        }
-        else res.json({ bus })
-    })
-    //comment
+    try {
+        const flights = await Airplane.find({ 'startCity': req.body.startCity, 'destination': req.body.destination });
+        res.json({ status: true, flights });
+    } catch (e) {
+        res.json({ status: false, message: "error while searching" })
+    }
 })
 
 router.post('/', (req, res) => {
 
-    bus.findOne({ _id: req.body.bId }, (err, bus) => {
+    Airplane.findOne({ _id: req.body.bId }, (err, Airplane) => {
         if (err) {
             res.json({ status: false, message: "error while searching with ID" })
         }
         else
-            res.json({ bus })
+            res.json({ Airplane })
     })
 })
-
-// router.post('/', (req, res) => {
-//     let newBus = new bus(req.body)
-//     newBus.save((err, bus) => {
-//         if (err) console.log(err)
-//         else res.status(201).json(bus)
-//     })
-// })
 
 
 

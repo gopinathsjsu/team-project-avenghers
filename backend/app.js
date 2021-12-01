@@ -35,6 +35,9 @@ const loginRouter = require('./routes/login');
 app.use('/', loginRouter);
 app.use('/register', registerRouter);
 
+const routeRouter = require('./routes/routeSelection');
+app.use('/booking', routeRouter);
+
 const seatRouter = require('./routes/seatSelection');
 app.use('/seat', seatRouter)
 
