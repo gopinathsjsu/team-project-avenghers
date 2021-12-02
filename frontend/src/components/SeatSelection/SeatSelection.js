@@ -115,7 +115,7 @@ export default function SeatSelection(props) {
                     <div class="form-check form-check-inline">
                         <p class="text-capitalize text-center">Additional Price:{price && price[seat] && price[seat].price || 0}</p>
                     </div>
-                    
+
                 </form>)
 
         })
@@ -152,7 +152,7 @@ export default function SeatSelection(props) {
 
 
                                         <Popup
-                                            content={() => <p> 6 $ </p>}
+                                            content={() => <p> 2 $ </p>}
                                             basic
                                             trigger={
                                                 <li className="seat"  onClick={
@@ -187,7 +187,7 @@ export default function SeatSelection(props) {
 
 
                                         <Popup
-                                            content={() => <p> 4$ </p>}
+                                            content={() => <p> 2$ </p>}
                                             basic
                                             trigger={
                                                 <li className="seat" onClick={
