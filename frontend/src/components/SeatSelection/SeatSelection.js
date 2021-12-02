@@ -65,6 +65,8 @@ export default function SeatSelection(props) {
         setArrowDown(true)
         localStorage.setItem("reservedSeats", JSON.stringify(seatNumber))
         localStorage.setItem("nameData", JSON.stringify(name))
+        localStorage.setItem("additionalSeatPrice", JSON.stringify(price))
+
         const payload = {
             name: name.pop(),
             gender: gender.pop(),
@@ -326,9 +328,6 @@ export default function SeatSelection(props) {
                         <div style={{display: 'flex', flexDirection: 'row'}}>
                             <Button onClick={e => handleSubmitDetails(e)} >
                                 Confirm Details
-                            </Button>
-                            <Button onClick={e => handleSkipDetails()}>
-                                Skip
                             </Button>
                         </div>
                         <div className={arrowDown ? "activeArrow2" : "nonActive"}>
