@@ -1,7 +1,7 @@
 import React from 'react'
 import RouteSelector from '../routeSelector/Routeselector'
 import SeatSelection from '../SeatSelection/SeatSelection'
-//import PaymentTab from '../PaymentTab/PaymentTab'
+import PaymentTab from '../PaymentTab/PaymentTab'
 
 export default function RouteSelection({ history }) {
 
@@ -9,7 +9,6 @@ export default function RouteSelection({ history }) {
         e.preventDefault()
         history.push('/profile')
     }
-
     const handleSignOut = e => {
         e.preventDefault()
         sessionStorage.removeItem('authToken')
@@ -18,7 +17,6 @@ export default function RouteSelection({ history }) {
         localStorage.clear()
         history.push('/')
     }
-
     const handleLogoClick = e => {
         e.preventDefault()
         history.push('/routes')
@@ -47,7 +45,7 @@ export default function RouteSelection({ history }) {
             <div>
                 <ul className="nav nav-pills">
                     <li className="nav-item">
-                        <a className="nav-link active" data-toggle="pill" href="#home">Select Bus</a>
+                        <a className="nav-link active" data-toggle="pill" href="#home">Select Flight</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link " data-toggle="pill" href="#menu1">Select Seat</a>

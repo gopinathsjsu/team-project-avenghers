@@ -60,7 +60,7 @@ export default function TicketPage({ history }) {
     }
     return (
 
-        <div className="container">
+        <div className="container" style={{ "minHeight": "100vh" }}>
             <div>
                 <nav className="mb-4 navbar navbar-expand-lg navbar-dark bg-unique hm-gradient">
                     <a href="/#" className="navbar-brand Company-Log">UT</a>
@@ -83,7 +83,7 @@ export default function TicketPage({ history }) {
                 <article className="ticket">
                     <header className="ticket__wrapper">
                         <div className="ticket__header">
-                            1 🎟 UNIQUE TRAVELS
+                            1 🎟 AvengHerS
                         </div>
                     </header>
                     <div className="ticket__divider">

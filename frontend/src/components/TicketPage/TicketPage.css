@@ -14,7 +14,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
     color: #454f54;
     background-color: #f4f5f6;
     background-image: linear-gradient(to bottom left, #abb5ba, #d5dadd);

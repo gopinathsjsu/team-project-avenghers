@@ -1,11 +1,12 @@
 import React from 'react'
 import './homepage.css'
 export default function Homepage({ history }) {
+    console.log(history)
     const enterSite = e => {
         e.preventDefault()
         history.push('/login')
     }
-
+    
     return (
         <div className='container maint-cnt'>
             <div className="header-nav">
