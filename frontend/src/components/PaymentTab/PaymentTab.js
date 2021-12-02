@@ -304,7 +304,7 @@ export default class App extends React.Component {
 
                     <div className="App-payment columnTwo">
                     
-                        <h3>AvengHers</h3>
+  <h3>AvengHerS</h3>
                         <div>
                             <p>BOOKING DETAILS</p>
                             <div className="row">
