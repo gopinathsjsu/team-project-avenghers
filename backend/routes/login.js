@@ -13,7 +13,7 @@ router.post('/login', async (req, res, next) => {
             }
             req.login(user, { session: false }, async (error) => {
                 if (error) return next(error)
-                const body = { _id: user._id, name: user.name, email: user.email, gender: user.gender };
+                const body = { _id: user._id, name: user.name, email: user.email, gender: user.gender,miles:user.mileage };
                 const token = jwt.sign({ user: body }, 'top_secret');
                 return res.json({ token });
             });

@@ -17,11 +17,19 @@
     margin-left: 20px;
     width:25rem;
 }
-
+.loader{
+    opacity: 0.5;
+}
 .credit-form {
     margin-top: 31px;
 }
-
+.credit-form input{
+    margin-left: 0px !important;
+}
+.smallFont {
+    font-size: 11px;
+    padding-left: 5px;
+}
 .actionButton {
     margin-top: 15px;
 }
