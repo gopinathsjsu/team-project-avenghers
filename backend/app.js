@@ -26,7 +26,6 @@ db.once('open', async () => {
     await seed();
 });
 
-const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -50,7 +49,6 @@ app.use('/booking', routeRouter);
 const seatRouter = require('./routes/seatSelection');
 app.use('/seat', seatRouter)
 
-const bookTickets = require("./routes/bookTickets");
 app.post('/bookTicket', function (req, res) {
     let payload = req.body
     let response = bookTickets.booktickets("bookTicket", payload);
