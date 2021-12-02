@@ -22,13 +22,17 @@ export default class App extends React.Component {
         focused: "",
         formData: "",
         token: "",
+        value:"",
+        loaderClass:"paym",
+        paymentThroughtMiles:0,
         useMiles:false
     }
-
+    
     componentDidMount() {
         const tok = sessionStorage.getItem("authToken")
-        //const decoded = jwt_decode(tok)
-        //this.setState({ token: decoded.user })
+        const decoded = jwt_decode(tok);
+        console.log(decoded)
+        this.setState({ token: decoded.user })
     }
     
 
@@ -71,25 +75,33 @@ export default class App extends React.Component {
     };
 
     handleFocus = ({event}) => {
+        console.log(this.state)
         this.State({
             checked: true 
         });
     };
-
+    generateBookingId = () =>{
+        var today = new Date();
+        var date = today.getFullYear()+''+(today.getMonth()+1)+''+today.getDate()+''+today.getTime();
+        return date
+    }
 
     moveToTicketPage = (e) => {
         e.preventDefault()
-
+        this.setState({
+            loaderClass: "paym loader" 
+        });
         localStorage.setItem("paymentData", JSON.stringify(this.state.formData))
+       // window.location.href = "/getTicket"
         console.log(localStorage)
         console.log(this.state)
+        let bookingId = this.generateBookingId();
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                "firstname": "Amir",
-                "lastname": "Khan",
-                "emailid": "ak@123",
+                "name": this.state.token.name,
+                "emailid": this.state.token.email,
                 "bookingstatus": "confirmed",
                 "date": localStorage.getItem("date"),
                 "flightnumber": "EK 230",
@@ -97,16 +109,24 @@ export default class App extends React.Component {
                 "PriceofTicket": "100",
                 "SeatNumber": localStorage.getItem("reservedSeats"),
                 "SkywardMiles": "35",
-                "Tripstatus": "Booked",
-                "destination": localStorage.getItem("start"),
+                "skywardMilesUsed": this.state.paymentThroughtMiles,
+                "passengers":localStorage.getItem("nameData"),
+                "Tripstatus": "Pending",
+                "destination": localStorage.getItem("destination"),
                 "flightname": "Boeing 737",
-                "startcity": localStorage.getItem("destination")
+                "startcity": localStorage.getItem("start"),
+                "bookingId":bookingId,
             })
         };
-        fetch('http://localhost:8080/bookTicket', requestOptions)
-           .then(response => response.json())
-            .then(data => this.setState({ postId: data.id }));
-       // window.location.href = "/getTicket"
+        fetch('http://localhost:8080/bookTicket', requestOptions).then(response => response.json())
+            .then(data => {
+                this.setState({ postId: data.id })
+                this.setState({
+                    loaderClass: "paym" 
+                });
+                window.location.href = "/getTicket"
+            });
+        window.location.href = "/getTicket"
     }
 
     renderNamesOfPassenger = () => {
@@ -133,6 +153,7 @@ export default class App extends React.Component {
         }
     }
     useMilesFunction =(event) =>{
+        console.log(this.state)
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         
@@ -141,11 +162,19 @@ export default class App extends React.Component {
         })
         console.log(value)
     }
+    handleKeyPress = (event) =>{
+        
+        let { value, min, max } = event.target;
+    value = Math.max(Number(min), Math.min(Number(max), Number(value)));
 
+    this.setState({ value });
+    console.log(value)
+    this.setState({['paymentThroughtMiles']:value})
+    }
     getSumTotal = () => {
         let count = 0
         let tax = 150
-        let miles = 100
+        let miles = this.state.paymentThroughtMiles;
         let seatArray = localStorage.getItem('reservedSeats')
         if (seatArray) {
             let seaArr = JSON.parse(seatArray)
@@ -157,6 +186,7 @@ export default class App extends React.Component {
                     <hr className="hr3" />
                     <p>{1000 * count}</p>
                     <p>+{miles}</p>
+                    <p>+{localStorage.getItem("additionalSeatPrice")}</p>
                     <p>+{tax}</p>
                     <p>{(1000 * count) + tax + miles}</p>
                 </div>
@@ -170,7 +200,7 @@ export default class App extends React.Component {
 
         return (
 
-            <div className="paym">
+            <div className={this.state.loaderClass}>
                 <div className="row">
 
 
@@ -235,7 +265,8 @@ export default class App extends React.Component {
                                         onFocus={this.handleInputFocus}
                                     />
                                 </div>
-                                <div className="form-group col-md-1">
+                                <div className="form-group col-md-4">
+                                    <div className="floatLeft">
                                     <input
                                         type="checkbox"
                                         name="useMiles"
@@ -244,16 +275,20 @@ export default class App extends React.Component {
                                         onChange={this.useMilesFunction}  
 
                                     />
+                                    <span className=" smallFont">Use my Miles</span>
+                                    </div>
+                                    
                                 </div>
-                                <div className="form-group col-md-5">
-                                    <span className="floatLeft">Use my Miles</span>
-                                </div>
-                                { this.state.useMiles ? <div className="form-group col-md-6">
+                                { this.state.useMiles ? <div className="form-group col-md-8">
                                     <input
-                                        type="text"
+                                        type="number"
+                                        min="0"
+                                        max={this.state.token.miles}
                                         name="useMilesEntered"
-                                        className="form-control" 
-                                        placeholder="Miles to redeem"
+                                        value={this.state.value}
+                                        className="form-control"
+                                        onChange={this.handleKeyPress}
+                                        placeholder={this.state.token.miles+" available to redeem"} 
 
                                     />
                                 </div>: null }
@@ -269,7 +304,7 @@ export default class App extends React.Component {
 
                     <div className="App-payment columnTwo">
                     
-                        <h3>AvengHerS</h3>
+  <h3>AvengHerS</h3>
                         <div>
                             <p>BOOKING DETAILS</p>
                             <div className="row">
@@ -286,12 +321,13 @@ export default class App extends React.Component {
                                     <hr className="hr3" />
                                     <p className="hdng">Ticket price</p>
                                     <p className="hdng">Payment through miles</p>
+                                    <p className="hdng">Seat Booking Price</p>
                                     <p className="hdng">Tax</p>
                                     <p className="hdng">Toal Sum</p>
 
                                 </div>
                                 <div className="col-md-6">
-                                    <p className="usrName">{localStorage.getItem("nameData")}</p>
+                                    <p className="usrName">{token.name}</p>
                                     <hr className="hr3" />
                                     <p className="usrName">{localStorage.getItem("date")}</p>
                                     <p className="usrName">{localStorage.getItem("start")}</p>
@@ -299,8 +335,8 @@ export default class App extends React.Component {
                                     <hr className="hr3" />
                                     <p className="usrName">{localStorage.getItem("nameData")}</p>
                                     <hr className="hr3" />
-                                    <p className="hdng">{localStorage.getItem("seat")} </p>
-                                    {this.renderSeatNumbers()}
+                                    <p className="hdng">{localStorage.getItem("reservedSeats")} </p>
+                                    
                                     
                                     <p>{this.getSumTotal()}</p>
                                 </div>
