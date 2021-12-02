@@ -1,3 +1,4 @@
+
 [{
   "_id": {
     "$oid": "61983da73bee77e7403526e4"
@@ -298,3 +299,260 @@
   "pricePerSeat": "1300",
   "date": "05/05/2022"
 }]
+=======
+[
+    {
+        "CompanyName": "Emirates",
+        "planeType": "Boeing 737",
+        "planeNumber": "EK 230",
+        "startCity": "SanJose",
+        "destination": "LosAngeles",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "250",
+        "date": "11/25/2021"
+    },
+    {
+        "CompanyName": "South West",
+        "planeType": "Boeing 737",
+        "planeNumber": "SW 223",
+        "startCity": "Oakland",
+        "destination": "Austin",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "500",
+        "date": "12/01/2021"
+    },
+    {
+        "CompanyName": "Alaska Air",
+        "planeType": "Boeing 737",
+        "planeNumber": "AA 258",
+        "startCity": "SanFrancisco",
+        "destination": "Boise",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "150",
+        "date": "12/10/2021"
+    },
+    {
+        "CompanyName": "Jet Blue",
+        "planeType": "Boeing 737",
+        "planeNumber": "JB 108",
+        "startCity": "SaltLakeCity",
+        "destination": "SanDiego",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "400",
+        "date": "11/30/2021"
+    },
+    {
+        "CompanyName": "United Airlines",
+        "planeType": "Boeing 737",
+        "planeNumber": "UA 121",
+        "startCity": "Atlanta",
+        "destination": "Chicago",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "450",
+        "date": "12/15/2021"
+    },
+    {
+        "CompanyName": "Delta Airlines",
+        "planeType": "Boeing 737",
+        "planeNumber": "DA 523",
+        "startCity": "New York",
+        "destination": "Denver",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "600",
+        "date": "12/20/2021"
+    },
+    {
+        "CompanyName": "Emirates",
+        "planeType": "Boeing 737",
+        "planeNumber": "EK 700",
+        "startCity": "Dallas",
+        "destination": "Las Vegas",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "650",
+        "date": "01/01/2022"
+    },
+    {
+        "CompanyName": "South West",
+        "planeType": "Boeing 737",
+        "planeNumber": "SW 253",
+        "startCity": "Houston",
+        "destination": "Phoenix",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "500",
+        "date": "12/31/2021"
+    },
+    {
+        "CompanyName": "Alaska Air",
+        "planeType": "Boeing 737",
+        "planeNumber": "AA 156",
+        "startCity": "Fresno",
+        "destination": "Sanford",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "280",
+        "date": "02/10/2022"
+    },
+    {
+        "CompanyName": "Jet Blue",
+        "planeType": "Boeing 737",
+        "planeNumber": "JB 569",
+        "startCity": "Tampa",
+        "destination": "Springfield",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "890",
+        "date": "01/30/2022"
+    },
+    {
+        "CompanyName": "United Airlines",
+        "planeType": "Boeing 737",
+        "planeNumber": "UA 458",
+        "startCity": "Manhattan",
+        "destination": "Lexington",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "450",
+        "date": "02/15/2022"
+    },
+    {
+        "CompanyName": "Delta Airlines",
+        "planeType": "Boeing 737",
+        "planeNumber": "DA 879",
+        "startCity": "Portland",
+        "destination": "Baltimore",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "600",
+        "date": "03/03/2022"
+    },
+    {
+        "CompanyName": "Emirates",
+        "planeType": "Boeing 737",
+        "planeNumber": "EK 231",
+        "startCity": "Boston",
+        "destination": "Detroit",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "690",
+        "date": "01/25/2022"
+    },
+    {
+        "CompanyName": "South West",
+        "planeType": "Boeing 737",
+        "planeNumber": "SW 478",
+        "startCity": "Rochester",
+        "destination": "Jackson",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "560",
+        "date": "03/31/2022"
+    },
+    {
+        "CompanyName": "Alaska Air",
+        "planeType": "Boeing 737",
+        "planeNumber": "AA 632",
+        "startCity": "Billings",
+        "destination": "Reno",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "369",
+        "date": "02/20/2022"
+    },
+    {
+        "CompanyName": "Jet Blue",
+        "planeType": "Boeing 737",
+        "planeNumber": "JB 596",
+        "startCity": "Lebanon",
+        "destination": "Newburgh",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "952",
+        "date": "04/30/2022"
+    },
+    {
+        "CompanyName": "United Airlines",
+        "planeType": "Boeing 737",
+        "planeNumber": "UA 785",
+        "startCity": "Oklahoma City",
+        "destination": "Portland",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "220",
+        "date": "04/15/2022"
+    },
+    {
+        "CompanyName": "Delta Airlines",
+        "planeType": "Boeing 737",
+        "planeNumber": "DA 357",
+        "startCity": "Charlotte",
+        "destination": "Columbia",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "158",
+        "date": "05/03/2022"
+    },
+    {
+        "CompanyName": "South West",
+        "planeType": "Boeing 737",
+        "planeNumber": "SW 617",
+        "startCity": "Memphis",
+        "destination": "Brownsville",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "100",
+        "date": "03/16/2022"
+    },
+    {
+        "CompanyName": "Alaska Air",
+        "planeType": "Boeing 737",
+        "planeNumber": "AA 555",
+        "startCity": "San Antonio",
+        "destination": "St. George",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "222",
+        "date": "05/20/2022"
+    },
+    {
+        "CompanyName": "Jet Blue",
+        "planeType": "Boeing 737",
+        "planeNumber": "JB 979",
+        "startCity": "Burlington",
+        "destination": "Richmond",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "236",
+        "date": "04/19/2022"
+    },
+    {
+        "CompanyName": "United Airlines",
+        "planeType": "Boeing 737",
+        "planeNumber": "UA 333",
+        "startCity": "Pasco",
+        "destination": "Seattle",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "698",
+        "date": "01/15/2022"
+    },
+    {
+        "CompanyName": "Delta Airlines",
+        "planeType": "Boeing 737",
+        "planeNumber": "DA 852",
+        "startCity": "Rock Springs",
+        "destination": "Ponce",
+        "totalSeats": "36",
+        "availableSeats": "20",
+        "pricePerSeat": "1300",
+        "date": "05/05/2022"
+    }
+]
+
