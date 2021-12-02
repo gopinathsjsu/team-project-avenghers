@@ -4,9 +4,17 @@ const logger = require('morgan');
 const cors = require('cors');
 const passport = require('passport');
 const express = require('express');
+
+//const mongoose = require('mongoose');
+const seed = require("./seed");
+const bookTickets = require("./routes/bookTickets")
+const completeTrip = require("./routes/completeTrip")
+
+const app = express();
+
 const mongoose = require('mongoose');
 
-const seed = require("./seed");
+
 const mongoo = require('./config/keys');
 
 //establish mongoose connection
@@ -38,6 +46,7 @@ app.use('/register', registerRouter);
 const routeRouter = require('./routes/routeSelection');
 app.use('/booking', routeRouter);
 
+
 const seatRouter = require('./routes/seatSelection');
 app.use('/seat', seatRouter)
 
@@ -48,6 +57,12 @@ app.post('/bookTicket', function (req, res) {
     response.then((a, b) => {
         res.send(JSON.stringify(a))
     })
-});
-
+ })
+ app.post('/markTripAsCompleted', function (req, res) {
+    let payload = req.body
+    let response = completeTrip.markTripAsCompleted("completeTrip",payload);
+    response.then((a,b)=>{
+        res.send(JSON.stringify(a))
+    })
+})
 module.exports = app;

@@ -8,6 +8,8 @@ async function main(params,payload) {
         await client.connect();
         if(params == "bookTicket"){
             retVal = await bookTickets(client,payload)
+        } else if(params == "completeTrip"){
+            retVal = await markTripAsCompleted(client,payload)
         }
          //await listDatabases(client);
          return retVal
@@ -26,11 +28,22 @@ async function listDatabases(client){
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
 async function bookTickets(client,payload){
-    //const result = await client.db("Cmpe202").collection("booktravel").findOne({ firstname: "Kesiya" });
-    console.log(payload)
     const result = await client.db("Cmpe202").collection("booktravel").insertOne(payload)
     
     return result
 };
+async function markTripAsCompleted(client,payload){
+    let newMileage = payload.existingMileage + payload.newMileage -payload.usedMileage;
+    let retArray = [];
+    const result = await client.db("Cmpe202").collection("users").updateOne(
+        {email:"kk@123"},{$set:{mileage:newMileage}})
+    const ret = await client.db("Cmpe202").collection("booktravel").updateOne(
+            {bookingId: payload.bookingId}, {$set:{Tripstatus:payload.status}})
+    retArray= [{"usersTable":result},{booktravel:ret}]
+    return retArray;
+};
+
+
+
 module.exports = { main }
 
