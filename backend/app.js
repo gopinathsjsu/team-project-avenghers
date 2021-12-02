@@ -23,6 +23,7 @@ const express = require('express');
 //const mongoose = require('mongoose');
 const seed = require("./seed");
 const bookTickets = require("./routes/bookTickets")
+const completeTrip = require("./routes/completeTrip")
 
 const app = express();
 
@@ -61,14 +62,18 @@ app.use('/register', registerRouter);
 const seatRouter = require('./routes/seatSelection');
  app.use('/seat', seatRouter)
 
-
  app.post('/bookTicket', function (req, res) {
     let payload = req.body
     let response = bookTickets.booktickets("bookTicket",payload);
     response.then((a,b)=>{
         res.send(JSON.stringify(a))
     })
-    
-
+ })
+ app.post('/markTripAsCompleted', function (req, res) {
+    let payload = req.body
+    let response = completeTrip.markTripAsCompleted("completeTrip",payload);
+    response.then((a,b)=>{
+        res.send(JSON.stringify(a))
+    })
  })
 module.exports = app;

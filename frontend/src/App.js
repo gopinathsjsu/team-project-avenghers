@@ -10,12 +10,15 @@ import Register from './components/Register/register'
 import RouteSelection from './components/RouteSelection/RouteSelection'
 import PaymentTab from './components/PaymentTab/PaymentTab'
 import TicketPage from './components/TicketPage/TicketPage'
+import Header from './components/Common/header'
 import './App.css';
 
 function App() {
   return (
+    
     <div className="App">
       <Router>
+      <Header />
         <Switch>
           <Route path="/" exact render={props => <Homepage {...props} />} />
           <Route path="/login" render={props => <Login {...props} />} />
