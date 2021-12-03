@@ -12,7 +12,9 @@ export default function FlightList({ value: dataInp, history }) {
     }, [dataInp])
 
     const handleSubmit = bId => {
+
         localStorage.setItem("selectedflightId", bId)
+
         SetClas(false)
         setArrowDown(true)
         history.push("/Seat")
@@ -35,7 +37,9 @@ export default function FlightList({ value: dataInp, history }) {
                         <div class="col-5 col-sm-3 mb-4">{flight.destination}</div>
                         <div class="col-5 col-sm-3 mb-4">{flight.pricePerSeat}</div>
                         <div class="col-5 col-sm-4 mb-2 ml-0" style={{ margin: "10px", float: "right" }}>
+
                             <button className={clas ? "btn btn-primary btn-md" : "btn btn-primary btn-md disabled"} onClick={(bId) => { handleSubmit(flight._id) }} style={{ float: "right" }} >Book Now</button>
+
                         </div>
                     </div>
                 </div >

@@ -9,6 +9,7 @@ const express = require('express');
 const seed = require("./seed");
 const bookTickets = require("./routes/bookTickets")
 const completeTrip = require("./routes/completeTrip")
+const getUserTrip = require("./routes/getUserTrips")
 
 const app = express();
 
@@ -59,6 +60,13 @@ app.post('/bookTicket', function (req, res) {
  app.post('/markTripAsCompleted', function (req, res) {
     let payload = req.body
     let response = completeTrip.markTripAsCompleted("completeTrip",payload);
+    response.then((a,b)=>{
+        res.send(JSON.stringify(a))
+    })
+})
+app.post('/getUserTrips', function (req, res) {
+    let payload = req.body
+    let response = getUserTrip.getUserTrips("getUserTrips",payload);
     response.then((a,b)=>{
         res.send(JSON.stringify(a))
     })

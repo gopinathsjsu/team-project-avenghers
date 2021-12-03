@@ -76,3 +76,33 @@ body {
 .bck {
     background-color: rgba(208, 211, 214, 0.637) !important;
 }
+body{padding-top:30px;}
+
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;
+}
+.p-0{
+    padding:0px !important;
+}
+.m-0{
+    margin:0px !important;
+}
+.profile-tabs .nav-tabs > li {
+    margin-right: 2px;
+}
+.profile-tabs .nav-tabs > li >button {
+    padding: 4px;
+}
+.profile-tabs .nav-tabs > li  .active {
+    border-bottom:none
+}
+.bg-white{
+    background-color: #efefef;
+}
+.overlay{
+    opacity: 0.5;
+}

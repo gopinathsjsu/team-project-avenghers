@@ -10,7 +10,7 @@ export default function Homepage({ history }) {
     return (
         <div className='container maint-cnt'>
             <div className="header-nav">
-                <span className="mytext1"> AvengHers </span>
+                <span className="mytext1"> AVENGHERS </span>
             </div>
             
             <div className="">
