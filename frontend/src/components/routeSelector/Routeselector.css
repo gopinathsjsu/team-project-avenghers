@@ -1,3 +1,10 @@
+.dataNotFound {
+    display: flex;
+    color: rgb(239 234 234);
+    margin: 10px 20px;
+    padding: 10px;
+    font-size: 18px;
+}
 .rdc {
     margin-left: -15px;
     height: auto;
