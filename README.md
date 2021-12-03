@@ -80,6 +80,10 @@ npm start
 cd backend
 npm run devStart
 ```
+# UI Wireframes:
+# Team's Project Board: 
+# Team's Project Journal:
+# Team's Google Sprint Task Sheet:
 
 
 
