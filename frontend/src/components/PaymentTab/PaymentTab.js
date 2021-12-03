@@ -25,7 +25,8 @@ export default class App extends React.Component {
         value:"",
         loaderClass:"paym",
         paymentThroughtMiles:0,
-        useMiles:false
+        useMiles:false,
+        totalTicketPrice:0
     }
    
     componentDidMount() {
@@ -94,7 +95,7 @@ export default class App extends React.Component {
         localStorage.setItem("paymentData", JSON.stringify(this.state.formData))
        // window.location.href = "/getTicket"
         console.log(localStorage)
-        console.log(this.state)
+        let skywardMiles = parseInt(localStorage.getItem("milesCovered"))/10;
         let bookingId = this.generateBookingId();
         const requestOptions = {
             method: 'POST',
@@ -104,16 +105,16 @@ export default class App extends React.Component {
                 "emailid": this.state.token.email,
                 "bookingstatus": "confirmed",
                 "date": localStorage.getItem("date"),
-                "flightnumber": "EK 230",
-                "MilesCovered": "350",
-                "PriceofTicket": "100",
+                "flightnumber": localStorage.getItem("flightNumber"),
+                "MilesCovered": localStorage.getItem("milesCovered"),
+                "PriceofTicket": localStorage.getItem("totalTicketPrice"),
                 "SeatNumber": localStorage.getItem("reservedSeats"),
-                "SkywardMiles": "35",
+                "SkywardMiles": skywardMiles,
                 "skywardMilesUsed": this.state.paymentThroughtMiles,
                 "passengers":localStorage.getItem("nameData"),
                 "Tripstatus": "Pending",
                 "destination": localStorage.getItem("destination"),
-                "flightname": "Boeing 737",
+                "flightname": localStorage.getItem("flightName"),
                 "startcity": localStorage.getItem("start"),
                 "bookingId":bookingId,
             })
@@ -187,6 +188,7 @@ export default class App extends React.Component {
         let count = 0
         let tax = 150
         let miles = this.state.paymentThroughtMiles;
+        let seatPrice = localStorage.pricePerSeat;
         console.log(localStorage)
         let seatArray = localStorage.getItem('reservedSeats')
         if (seatArray) {
@@ -194,14 +196,17 @@ export default class App extends React.Component {
             for (let i = 0; i < seaArr.length; i++) {
                 count++
             }
+            let total = (seatPrice * count) + tax + miles + this.getAdditionalSeatPrice();
+           
+            localStorage.setItem("totalTicketPrice", total)
             return (
                 <div>
                     <hr className="hr3" />
-                    <p>{1000 * count}</p>
+                    <p>{seatPrice * count}</p>
                     <p>+{miles}</p>
                     <p>+{this.getAdditionalSeatPrice()}</p>
                     <p>+{tax}</p>
-                    <p>{(1000 * count) + tax + miles + this.getAdditionalSeatPrice()}</p>
+                    <p>{total}</p>
                 </div>
             )
         }
