@@ -1,66 +1,129 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import './account.css'
 import jwt_decode from 'jwt-decode'
+import 'bootstrap/dist/css/bootstrap.css';
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
 
-export default function Account({ history }) {
-
-    const [token, setToken] = useState({})
-
-    useEffect(() => {
+export default class Account extends React.Component  {
+    state = {
+        number: "",
+        name: "",
+        expiry: "",
+        cvc: "",
+        issuer: "",
+        focused: "",
+        formData: "",
+        token: "",
+        value:"",
+        loaderClass:"paym",
+        paymentThroughtMiles:0,
+        useMiles:false,
+        tableData:[],
+        overlay:""
+    }
+    componentDidMount() {
         const tok = sessionStorage.getItem("authToken")
-        const decoded = jwt_decode(tok)
-        setToken(decoded.user)
-    }, [])
-
-    const  moveToreservation = (e) => {
+        const decoded = jwt_decode(tok);
+        this.setState({ token: decoded.user })
+    }
+    fetchTravelHistory = (e) => {
         e.preventDefault()
-        window.location.href = "/Viewreservation"
+        this.setState({
+            overlay: "overlay"
+        });
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                "emailid":this.state.token.email,
+                "Tripstatus":"completed"
+            })
+        };
+        fetch('http://localhost:8080/getUserTrips', requestOptions).then(response => response.json())
+            .then(json => {
+                this.setState({
+                    tableData: json
+                });
+                this.setState({
+                    overlay: ""
+                });
+            });
+       
     }
     
-    const goBackToRoutes = e => { 
-        e.preventDefault()
-        history.push('/routes')
-    }
-    const Skywards = e => { 
-        e.preventDefault() 
-        console.log(token.miles);
-
-    }
-    
-
-    return (
-        <div className="container">
-            <section className="profile">
-                <header className="header">
-                    <div className="details">
-                        <img src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=b38c22a46932485790a3f52c61fcbe5a" alt="John Doe" className="profile-pic" />
-                        <h1 className="heading">{token.name}</h1>
-                        <div className="location">
-                            <svg class="svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.388,4.751H2.613c-0.213,0-0.389,0.175-0.389,0.389v9.72c0,0.216,0.175,0.389,0.389,0.389h14.775c0.214,0,0.389-0.173,0.389-0.389v-9.72C17.776,4.926,17.602,4.751,17.388,4.751 M16.448,5.53L10,11.984L3.552,5.53H16.448zM3.002,6.081l3.921,3.925l-3.921,3.925V6.081z M3.56,14.471l3.914-3.916l2.253,2.253c0.153,0.153,0.395,0.153,0.548,0l2.253-2.253l3.913,3.916H3.56z M16.999,13.931l-3.921-3.925l3.921-3.925V13.931z"></path>
-                            </svg>
-                            <p>{token.email}</p>
+    render (){
+        return (
+            <div className="container profile-tabs">
+                <div style={{ display: 'block', width: 700, padding: 30 }}>
+          <Tabs defaultActiveKey="first" value={this.state.checked}  onClick={(e)=>this.fetchTravelHistory(e)}>
+            <Tab eventKey="first" title="Profile">
+            <div className="container p-0">
+        <div className="row m-0">
+            <div className="col-xs-12 col-sm-12 col-md-12 p-0">
+                <div className="well well-sm">
+                    <div className="row m-0">
+                        <div className="col-sm-2 col-md-2 p-0">
+                            <img src="http://placehold.it/200x200" alt="" className="img-rounded img-responsive" />
                         </div>
-
-                        <div className="stats">
-                            <div className="col-3">
-                            <button className="btn btn-primary" onClick={(e) => Skywards(e)}>Skywards Miles</button> 
-                            </div>
-                            <div className="col-3">
-                                <button className="btn btn-primary" onClick={(e) => moveToreservation(e)}>Current Trips</button>  
-                            </div>
-                            <div className="col-3">
-                                <button className="btn btn-primary" onClick={() => ('Right button pressed')}>Past Trips</button>  
-                            </div>
-                        </div>
-                        <div className="stat2">
-                            <div className="col-12">
-                                <button className="btn btn-info" onClick={(e) => goBackToRoutes(e)}>GO BACK</button>
+                        <div className="col-sm-8 col-md-8">
+                            <h4>
+                                {this.state.token.name}</h4>
+                            <small><cite title="San Francisco, USA">San Jose, California, USA <i className="glyphicon glyphicon-map-marker">
+                            </i></cite></small>
+                            <p>
+                                <i className="glyphicon glyphicon-envelope"></i>{this.state.token.email}
+                                <br />
+                                <i className="glyphicon glyphicon-globe"></i>{this.state.token.miles} miles available to redeem
+                                <br />
+                                <i className="glyphicon glyphicon-gift"></i>June 02, 1988</p>
+                                <div class="btn-group">
+                                <a type="button" class="btn btn-primary btn-block" href="/ViewReservation">
+                                View Upcoming Trips</a>
                             </div>
                         </div>
                     </div>
-                </header>
-            </section>
+                </div>
+            </div>
         </div>
-    )
+    </div>
+            </Tab>
+            <Tab eventKey="second" title="Past Trips" >
+            <div className="container p-0">
+                <table className={this.state.overlay+" table table-bordered bg-white"}>
+                    <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Flight Name</th>
+                        <th>Travel Date</th>
+                        <th>Miles Used</th>
+                        <th>Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            this.state.tableData.map((item) => (
+                                <tr key={item.bookingId}>
+                                    <td>{item.bookingId}</td>
+                                    <td>{item.startcity}</td>
+                                    <td>{item.destination}</td>
+                                    <td>{item.flightname}</td>
+                                    <td>{item.date}</td>
+                                    <td>{item.skywardMilesUsed}</td>
+                                    <td>${item.PriceofTicket}</td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </div>
+            </Tab>
+          </Tabs>
+        </div>
+            </div>
+        )
+    }
 }
+    
