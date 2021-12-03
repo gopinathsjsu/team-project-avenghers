@@ -10,6 +10,8 @@ const seed = require("./seed");
 const bookTickets = require("./routes/bookTickets")
 const completeTrip = require("./routes/completeTrip")
 const getUserTrip = require("./routes/getUserTrips")
+const cancelTicket = require("./routes/cancelTicket")
+const getAllBookings = require("./routes/getAllBookings")
 
 const app = express();
 
@@ -67,6 +69,27 @@ app.post('/bookTicket', function (req, res) {
 app.post('/getUserTrips', function (req, res) {
     let payload = req.body
     let response = getUserTrip.getUserTrips("getUserTrips",payload);
+    response.then((a,b)=>{
+        res.send(JSON.stringify(a))
+    })
+})
+app.post('/cancelTicket', function (req, res) {
+    let payload = req.body
+    let response = cancelTicket.cancelTicket("cancelTicket",payload);
+    response.then((a,b)=>{
+        res.send(JSON.stringify(a))
+    })
+})
+app.post('/getAllBookings', function (req, res) {
+    let payload = req.body
+    let response = getAllBookings.getAllBookings("getAllBookings",payload);
+    response.then((a,b)=>{
+        res.send(JSON.stringify(a))
+    })
+})
+app.post('/getAllAirlines', function (req, res) {
+    let payload = req.body
+    let response = getAllBookings.getAllBookings("getAllAirlines",payload);
     response.then((a,b)=>{
         res.send(JSON.stringify(a))
     })

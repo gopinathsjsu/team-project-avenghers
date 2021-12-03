@@ -112,7 +112,7 @@ export default class App extends React.Component {
                 "SkywardMiles": skywardMiles,
                 "skywardMilesUsed": this.state.paymentThroughtMiles,
                 "passengers":localStorage.getItem("nameData"),
-                "Tripstatus": "Pending",
+                "Tripstatus": "pending",
                 "destination": localStorage.getItem("destination"),
                 "flightname": localStorage.getItem("flightName"),
                 "startcity": localStorage.getItem("start"),
