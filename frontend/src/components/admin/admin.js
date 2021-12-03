@@ -7,18 +7,14 @@ import Tab from 'react-bootstrap/Tab';
 
 export default class Account extends React.Component  {
     state = {
-        number: "",
-        name: "",
-        expiry: "",
-        cvc: "",
-        issuer: "",
-        focused: "",
-        formData: "",
+        showModal:false,
+        editAirlines:false,
         token: "",
-        value:"",
+        newPricePerSeat:"",
+        responseAddAirlines:"",
+        newTravelDate:"",
         loaderClass:"paym",
-        paymentThroughtMiles:0,
-        useMiles:false,
+        formData:"",
         tableData:[],
         airlinesData:[],
         overlay:""
@@ -28,6 +24,7 @@ export default class Account extends React.Component  {
         const decoded = jwt_decode(tok);
         this.setState({ token: decoded.user })
     }
+   
     completeTrip = (e,booking) => {
         e.preventDefault();
         this.setState({
@@ -106,11 +103,82 @@ export default class Account extends React.Component  {
                 this.setState({
                     overlay: ""
                 });
-            });
+                this.setState({
+                    editAirlines: false
+                });
+        });
        
     }
-    
+    updateAirlines= (item,e)=>{
+        let payload = {};
+        this.setState({
+            overlay: "overlay"
+        });
+        payload ={"flightNumber":item.planeNumber,"updateValues":
+            {
+                "pricePerSeat":this.state.newPricePerSeat,
+                "date":this.state.newTravelDate,
+            }
+        }
+        console.log(payload)
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        };
+        fetch('http://localhost:8080/updateAirlines', requestOptions).then(response => response.json())
+            .then(json => {
+               this.getAllAirlines("event")
+        });
+    }
+    setNewPrice = (event)=>{
+        let { value, min, max } = event.target;
+        this.setState({ newPricePerSeat:value });
+    }
+    setNewDate = (event)=>{
+        let { value, min, max } = event.target;
+        this.setState({ newTravelDate:value });
+    }
+    handleSubmit = e => {
+        e.preventDefault();
+        this.setState({
+            responseAddAirlines: "Submitting.. Please wait",
+            overlay: "overlay"
+        });
+        const { issuer } = this.state;
+        const formData = [...e.target.elements]
+            .filter(d => d.name)
+            .reduce((acc, d) => {
+                acc[d.name] = d.value;
+                return acc;
+            }, {});
+        console.log(formData);
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        };
+        fetch('http://localhost:8080/addNewAirlines', requestOptions).then(response => response.json())
+            .then(data => {
+                if(data.insertedId){
+                    this.setState({
+                        responseAddAirlines: "Succefully Added flight ",
+                        overlay: ""
+                    });
+                } else {
+                    this.setState({
+                        responseAddAirlines: "Error Occured",
+                        overlay: ""
+                    });
+                }
+            });
+        this.form.reset();
+    };
+    submitNewAirlines =e =>{
+       
+    }
     render (){
+        const { name, number, expiry, cvc, focused, issuer, formData, token } = this.state;
         return (
             <div className="container-fluid profile-tabs">
                 <div style={{ display: 'block'}}>
@@ -154,6 +222,7 @@ export default class Account extends React.Component  {
                         <th>Travel Date</th>
                         <th>Miles Used</th>
                         <th>Price</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -168,7 +237,9 @@ export default class Account extends React.Component  {
                                     <td>{item.date}</td>
                                     <td>{item.skywardMilesUsed}</td>
                                     <td>${item.PriceofTicket}</td>
-                                    <td> <button type="button" className="btn btn-danger btn-block" onClick={e=>this.cancelTicket(e,item.bookingId)}>Cancel</button></td>
+                                    <td>{item.Tripstatus}</td>
+                                    <td>{item.Tripstatus =="Pending" ? <button type="button" className="btn btn-success btn-block" 
+                                    onClick={e=>this.completeTrip(e,item.bookingId)}>Complete</button>:<span>Completed</span>}</td>
                                 </tr>
                             ))
                         }
@@ -177,6 +248,8 @@ export default class Account extends React.Component  {
             </div>
             </Tab>
             <Tab eventKey="third" title="Airlines" >
+            
+        <button type="button" className="btn btn-primary btn-sm editBtn" onClick={e=>this.setState({ editAirlines: true })}>Edit</button>
             <div className="container p-0">
             <table className={this.state.overlay+" table table-bordered bg-white"}>
                     <thead>
@@ -191,7 +264,7 @@ export default class Account extends React.Component  {
                         <th>Price per Seat</th>
                         <th>Date</th>
                         <th>Distance</th>
-                        <th>Action</th>
+                        {this.state.editAirlines ?<th>Action</th>:null}
                     </tr>
                     </thead>
                     <tbody>
@@ -205,10 +278,10 @@ export default class Account extends React.Component  {
                                     <td>{item.destination}</td>
                                     <td>{item.totalSeats}</td>
                                     <td>{item.availableSeats}</td>
-                                    <td>{item.pricePerSeat}</td>
-                                    <td>{item.date}</td>
+                                    {this.state.editAirlines ? <td className="w-100p"><input defaultValue={item.pricePerSeat} onChange={e=>this.setNewPrice(e)} className="m-0 w-100p"></input></td>:<td>{item.pricePerSeat}</td>}
+                                    {this.state.editAirlines ? <td className="w-100p"><input defaultValue={item.date}  onChange={e=>this.setNewDate(e)} className="m-0 w-100p"></input></td>:<td>{item.date}</td>}
                                     <td>{item.milescovered} miles</td>
-                                    <td><i className="glyphicon glyphicon-pencil"></i><i className="glyphicon glyphicon-remove color-red"></i></td>
+                                    {this.state.editAirlines ?<td><i title="Click to update" onClick={e=>this.updateAirlines(item,e)} className="glyphicon glyphicon-ok color-green c-p"></i></td>:null}
                                 </tr>
                             ))
                         }
@@ -218,7 +291,137 @@ export default class Account extends React.Component  {
             </div>
             </Tab>
             <Tab eventKey="addNewFlight" title="Add New Flight" >
-            Add New Tab
+            <div className="row container">
+
+                        <h4 className="t-center">{this.state.responseAddAirlines}</h4>
+                    <div key="Payment" className="col-md-7 col-md-offset-2 innerbgAdmin">
+                        <div className={this.state.overlay}>
+                           
+                            <form className="row m-0" ref={c => (this.form = c)} onSubmit={this.handleSubmit}>
+                                
+                                <div className="form-group col-md-12">
+                                    <input
+                                        type="text"
+                                        name="CompanyName"
+                                        className="form-control"
+                                        placeholder="Company Name"
+                                        required
+                                        onChange={this.handleInputChange}
+                                        onFocus={this.handleInputFocus}
+                                    />
+                                </div>
+    
+                                <div className="form-group col-md-4">
+                                    <input
+                                        placeholder="Plane Type"
+                                        type="text"
+                                        name="planeType"
+
+                                        className="form-control"
+                                        required
+                                        onChange={this.handleInputChange}
+                                        onFocus={this.handleInputFocus}
+                                    />
+                                </div>
+                                <div className="form-group col-md-4">
+                                    <input
+                                        placeholder="Plane Number"
+                                        type="text"
+                                        name="planeNumber"
+
+                                        className="form-control"
+                                        required
+                                        onChange={this.handleInputChange}
+                                        onFocus={this.handleInputFocus}
+                                    />
+                                </div>
+                                <div className="form-group col-md-4">
+                                    <input
+                                        placeholder="From"
+                                        type="text"
+                                        name="startCity"
+
+                                        className="form-control"
+                                        required
+                                        onChange={this.handleInputChange}
+                                        onFocus={this.handleInputFocus}
+                                    />
+                                </div>
+                                <div className="form-group col-md-4">
+                                    <input
+                                        placeholder="To"
+                                        type="text"
+                                        name="destination"
+
+                                        className="form-control"
+                                        required
+                                        onChange={this.handleInputChange}
+                                        onFocus={this.handleInputFocus}
+                                    />
+                                </div>
+                                <div className="form-group col-md-4">
+                                    <input
+                                        type="number"
+                                        name="totalSeats"
+                                        className="form-control"
+                                        placeholder="Total Seats"
+                                        required
+                                        onChange={this.handleInputChange}
+                                        onFocus={this.handleInputFocus}
+                                    />
+                                </div>
+                                <div className="form-group col-md-4">
+                                    <input
+                                        type="number"
+                                        name="availableSeats"
+                                        className="form-control"
+                                        placeholder="Available Seats"
+                                        required
+                                        onChange={this.handleInputChange}
+                                        onFocus={this.handleInputFocus}
+                                    />
+                                </div>
+                                <div className="form-group col-md-4">
+                                    <input
+                                        type="number"
+                                        name="pricePerSeat"
+                                        className="form-control"
+                                        placeholder="Price Per Seat"
+                                        required
+                                        onChange={this.handleInputChange}
+                                        onFocus={this.handleInputFocus}
+                                    />
+                                </div>
+                                <div className="form-group col-md-4">
+                                    <input
+                                        type="text"
+                                        name="date"
+                                        className="form-control"
+                                        placeholder="Date  (MM/DD/YYYY)"
+                                        required
+                                        onChange={this.handleInputChange}
+                                        onFocus={this.handleInputFocus}
+                                    />
+                                </div>
+                                <div className="form-group col-md-4">
+                                    <input
+                                        type="number"
+                                        name="milescovered"
+                                        className="form-control"
+                                        placeholder="Distance"
+                                        required
+                                        onChange={this.handleInputChange}
+                                        onFocus={this.handleInputFocus}
+                                    />
+                                </div>
+                                
+                                <div className="form-group col-md-12">
+                                    <button onClick={e => this.submitNewAirlines(e)} className="btn btn-success">Add New Flight</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
             </Tab>
             
           </Tabs>

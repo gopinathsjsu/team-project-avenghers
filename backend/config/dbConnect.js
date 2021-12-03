@@ -19,6 +19,10 @@ async function main(params,payload) {
         }
         else if(params == "getAllAirlines"){
             retVal = await getAllAirlines(client,payload)
+        }else if(params == "updateAirlines"){
+            retVal = await updateAirlines(client,payload)
+        } else if(params == "addNewAirlines"){
+            retVal = await addNewAirlines(client,payload)
         }
          //await listDatabases(client);
          return retVal
@@ -75,6 +79,15 @@ async function getAllAirlines(client,payload){
   const result = await cursor.toArray();
     return result;
 };
-
+async function updateAirlines(client,payload){
+    const result = await client.db("Cmpe202").collection("Airlines").updateOne(
+        {planeNumber:payload.flightNumber},{$set:payload.updateValues})
+    return result;
+};
+async function addNewAirlines(client,payload){
+    const result = await client.db("Cmpe202").collection("Airlines").insertOne(payload)
+    
+    return result
+};
 module.exports = { main }
 

@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 
+
 export default class Account extends React.Component  {
     state = {
         number: "",
@@ -86,8 +87,9 @@ export default class Account extends React.Component  {
             });
        
     }
-    
+   
     render (){
+        
         return (
             <div className="container profile-tabs">
                 <div style={{ display: 'block', width: 700, padding: 30 }}>
@@ -111,10 +113,9 @@ export default class Account extends React.Component  {
                                 <br />
                                 <i className="glyphicon glyphicon-globe"></i>{this.state.token.miles} miles available to redeem
                                 <br />
-                                <i className="glyphicon glyphicon-gift"></i>June 02, 1988</p>
+                                <i className="glyphicon glyphicon-gift"></i>June 02, 1996</p>
                                 <div className="btn-group">
-                                <a type="button" className="btn btn-primary btn-block" href="/ViewReservation">
-                                View Upcoming Trips</a>
+                               
                             </div>
                         </div>
                     </div>
@@ -223,7 +224,11 @@ export default class Account extends React.Component  {
             </Tab>
           </Tabs>
         </div>
+       
+
+        
             </div>
+            
         )
     }
 }

@@ -7,7 +7,16 @@ body {
 .profile {
     padding: 30px 30px;
 }
-
+.innerbgAdmin {
+    background-color: rgba(240, 248, 255, 0.548);
+    padding: 10px;
+}
+.innerbgAdmin input{
+    margin-left: 0 !important;
+}
+.t-center{
+    text-align: center;
+}
 .header {
     min-height: 60vh;
     background: rgba(205, 207, 207, 0.637);
@@ -17,6 +26,25 @@ body {
     justify-content: center;
     box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.45);
     color: #333;
+}
+.c-p{
+    cursor: pointer;
+}
+.w-100p{
+    width:100px
+}
+.color-green{
+    color:#16c516
+}
+.editBtn{
+    float: right;
+    margin-top: -35px;
+}
+.w-80{
+    width: 80%;
+}
+.w-60{
+    width: 60%;
 }
 .addBtn{
     float:right
