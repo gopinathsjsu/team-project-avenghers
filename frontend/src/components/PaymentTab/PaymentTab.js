@@ -27,7 +27,7 @@ export default class App extends React.Component {
         paymentThroughtMiles:0,
         useMiles:false
     }
-    
+   
     componentDidMount() {
         const tok = sessionStorage.getItem("authToken")
         const decoded = jwt_decode(tok);
@@ -142,7 +142,8 @@ export default class App extends React.Component {
     }
 
     renderSeatNumbers = () => {
-        let seatArray = localStorage.getItem('reservedSeats')
+        let seatArray = localStorage.getItem('reservedSeats');
+        console.log(seatArray)
         if (seatArray) {
             let seaArr = JSON.parse(seatArray);
             return seaArr.map((seat, idx) => {
@@ -171,10 +172,22 @@ export default class App extends React.Component {
     console.log(value)
     this.setState({['paymentThroughtMiles']:value})
     }
+    getAdditionalSeatPrice(){
+        let seatObj = JSON.parse(localStorage.getItem("additionalSeatPrice"));
+        let arr = Object.values(seatObj)
+        let sum = 0;
+        for(let i=0;i<arr.length;i++){
+            sum = arr[i].price +sum
+        }
+        let obj = {};
+        obj["sum"] = sum;
+        return sum
+    }
     getSumTotal = () => {
         let count = 0
         let tax = 150
         let miles = this.state.paymentThroughtMiles;
+        console.log(localStorage)
         let seatArray = localStorage.getItem('reservedSeats')
         if (seatArray) {
             let seaArr = JSON.parse(seatArray)
@@ -186,9 +199,9 @@ export default class App extends React.Component {
                     <hr className="hr3" />
                     <p>{1000 * count}</p>
                     <p>+{miles}</p>
-                    <p>+{localStorage.getItem("additionalSeatPrice")}</p>
+                    <p>+{this.getAdditionalSeatPrice()}</p>
                     <p>+{tax}</p>
-                    <p>{(1000 * count) + tax + miles}</p>
+                    <p>{(1000 * count) + tax + miles + this.getAdditionalSeatPrice()}</p>
                 </div>
             )
         }
@@ -200,12 +213,11 @@ export default class App extends React.Component {
 
         return (
 
-            <div className={this.state.loaderClass}>
-                <div className="row">
+                <div className="row container App-payment">
 
 
-                    <div key="Payment">
-                        <div className="App-payment cl-1">
+                    <div key="Payment" className="col-md-4 innerbg">
+                        <div className="">
                             <p className="pPayment">Enter Credit card details</p>
                             <Card
                                 number={number}
@@ -302,9 +314,9 @@ export default class App extends React.Component {
                     </div>
 
 
-                    <div className="App-payment columnTwo">
+                    <div className="col-md-7 innerbg">
                     
-  <h3>AvengHerS</h3>
+                        <h3>AvengHerS</h3>
                         <div>
                             <p>BOOKING DETAILS</p>
                             <div className="row">
@@ -344,7 +356,6 @@ export default class App extends React.Component {
                         </div>
                     </div>
                 </div>
-            </div>
    
 
 

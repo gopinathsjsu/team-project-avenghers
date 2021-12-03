@@ -10,6 +10,8 @@ async function main(params,payload) {
             retVal = await bookTickets(client,payload)
         } else if(params == "completeTrip"){
             retVal = await markTripAsCompleted(client,payload)
+        }else if(params == "getUserTrips"){
+            retVal = await getUserTrips(client,payload)
         }
          //await listDatabases(client);
          return retVal
@@ -41,6 +43,12 @@ async function markTripAsCompleted(client,payload){
             {bookingId: payload.bookingId}, {$set:{Tripstatus:payload.status}})
     retArray= [{"usersTable":result},{booktravel:ret}]
     return retArray;
+};
+async function getUserTrips(client,payload){
+   
+    const cursor =  client.db("Cmpe202").collection("booktravel").find(payload)
+  const result = await cursor.toArray();
+    return result;
 };
 
 
