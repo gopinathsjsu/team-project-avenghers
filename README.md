@@ -43,9 +43,13 @@ Below listed are the decisions/use cases considered for features provided by the
 * Add flight
 * Update flight info
 * View all bookings
-
-
-
+# Database Design (Tables):
+* users
+* Airlines
+* Bookings
+* SeatSelection
+* bookings
+* booktravel
        
        
         
