@@ -12,6 +12,13 @@ async function main(params,payload) {
             retVal = await markTripAsCompleted(client,payload)
         }else if(params == "getUserTrips"){
             retVal = await getUserTrips(client,payload)
+        }else if(params == "cancelTicket"){
+            retVal = await cancelTicket(client,payload)
+        }else if(params == "getAllBookings"){
+            retVal = await getAllBookings(client,payload)
+        }
+        else if(params == "getAllAirlines"){
+            retVal = await getAllAirlines(client,payload)
         }
          //await listDatabases(client);
          return retVal
@@ -35,12 +42,13 @@ async function bookTickets(client,payload){
     return result
 };
 async function markTripAsCompleted(client,payload){
-    let newMileage = payload.existingMileage + payload.newMileage -payload.usedMileage;
+    const userCursor =  client.db("Cmpe202").collection("users").find({email:payload.email});
+    let users = await userCursor.toArray();
+    let existingMileage = users[0].mileage
+    let newMileage = existingMileage + payload.newMileage -payload.usedMileage;
     let retArray = [];
-    const result = await client.db("Cmpe202").collection("users").updateOne(
-        {email:"kk@123"},{$set:{mileage:newMileage}})
-    const ret = await client.db("Cmpe202").collection("booktravel").updateOne(
-            {bookingId: payload.bookingId}, {$set:{Tripstatus:payload.status}})
+    const result = await client.db("Cmpe202").collection("users").updateOne({email:payload.email},{$set:{mileage:newMileage}})
+    const ret = await client.db("Cmpe202").collection("booktravel").updateOne({bookingId: payload.bookingId}, {$set:{Tripstatus:payload.status}})
     retArray= [{"usersTable":result},{booktravel:ret}]
     return retArray;
 };
@@ -50,8 +58,23 @@ async function getUserTrips(client,payload){
   const result = await cursor.toArray();
     return result;
 };
-
-
+async function cancelTicket(client,payload){
+    const result = await client.db("Cmpe202").collection("booktravel").updateOne(
+        {bookingId:payload.bookingId},{$set:{Tripstatus:"cancelled"}})
+    return result;
+};
+async function getAllBookings(client,payload){
+    
+    const cursor =  client.db("Cmpe202").collection("booktravel").find()
+  const result = await cursor.toArray();
+    return result;
+};
+async function getAllAirlines(client,payload){
+    
+    const cursor =  client.db("Cmpe202").collection("Airlines").find()
+  const result = await cursor.toArray();
+    return result;
+};
 
 module.exports = { main }
 

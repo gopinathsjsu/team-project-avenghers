@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Routeselector.css'
 import * as apiCall from './routeApifunc'
 import FlightList from '../FlightList/FlightList'
+import jwt_decode from 'jwt-decode'
 
 const cities = [
     'SanJose', 'Oakland', 'SanFrancisco', 'SaltLakeCity', 'Atlanta', 'New York', 'Dallas', 'Houston', 'Fresno', 'Tampa', 'Manhattan', 'Portland', 'Boston', 'Rochester', 'Billings', 'Lebanon', 'Oklahoma City', 'Charlotte', 'Memphis', 'San Antonio', 'Burlington', 'Pasco', 'Rock Springs', 'LosAngeles', 'Austin', 'Boise', 'SanDiego', 'Chicago', 'Denver', 'Las Vegas', 'Phoenix', 'Sanford', 'Springfield', 'Lexington', 'Baltimore', 'Detroit', 'Jackson', 'Reno', 'Newburgh', 'Portland', 'Columbia', 'Brownsville', 'St. George', 'Richmond', 'Seattle', 'Ponce'

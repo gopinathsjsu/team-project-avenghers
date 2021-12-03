@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { logUserIn } from './loginUtil'
 import './login.css'
 import { FaFacebookF, FaTwitterSquare } from "react-icons/fa";
+import jwt_decode from 'jwt-decode'
 
 export default function Login({ history, setToken }) {
 
@@ -22,10 +23,19 @@ export default function Login({ history, setToken }) {
         logUserIn(userData)
             .then(response => response.data)
             .then(data => {
-                let { token } = data
+                let { token } = data;
+                
                 sessionStorage.setItem('authToken', token);
                 setToken(token);
-                history.push('/routes')
+                const tok = sessionStorage.getItem("authToken")
+                console.log(jwt_decode(tok).user.role)
+                let role = jwt_decode(tok).user.role;
+                if(role == 1){
+                    history.push('/admin')
+                } else {
+                    history.push('/routes')
+                }
+                
             }).catch(e => {
                 setErrorMessage("Login Failed!");
                 setTimeout(() => { setErrorMessage("") }, 2500);

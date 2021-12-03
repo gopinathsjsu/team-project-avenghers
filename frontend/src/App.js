@@ -12,6 +12,7 @@ import PaymentTab from './components/PaymentTab/PaymentTab'
 import TicketPage from './components/TicketPage/TicketPage'
 import Header from './components/Common/header'
 import Logout from './components/Common/logout'
+import Admin from './components/admin/admin'
 import './App.css';
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/PaymentTab" exact render={props => <PaymentTab {...props} />} />
           <Route path="/getTicket" exact render={props => <TicketPage {...props} />} />
           <Route path="/logout" exact render={props => <Logout {...props} unsetToken={() => setAuthToken("")}/>} />
+          <Route path="/admin" exact render={props => <Admin {...props} />} />
         </Switch>
       </Router>
     </div>
