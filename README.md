@@ -84,6 +84,7 @@ npm run devStart
 # Team's Project Board: 
 # Team's Project Journal:
 # Team's Google Sprint Task Sheet:
+Sprint Task sheet and Burndown charts included:
 
 
 
