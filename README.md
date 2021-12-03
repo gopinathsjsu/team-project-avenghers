@@ -8,9 +8,17 @@
 * Vasudha Pasumarthi (SJSU_ID: 015328417)
 # Technology Stack:
 &ensp; MERN Stack
-
 * Frontend: ReactJS, BootStrap, MaterialUI 
 * Backend: NodeJS, ExpressJS 
 * Database: MongoDB 
 * Authentication: PassportJS 
 * Cloud: Amazon Web Services (EC2 Cluster) 
+# Scrum Meetings Schedule:
+&ensp; Every, 
+* Thursday
+* Sunday
+# XP Core Values Implemented:
+* Communication
+* Feedback
+
+
