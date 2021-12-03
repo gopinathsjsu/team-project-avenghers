@@ -50,6 +50,8 @@ Below listed are the decisions/use cases considered for features provided by the
 * SeatSelection
 * bookings
 * booktravel
-       
+# UML Diagrams:
+## Component Diagram:
+## Deployment Diagram:
        
         
