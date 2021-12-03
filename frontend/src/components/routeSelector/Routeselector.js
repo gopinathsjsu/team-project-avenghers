@@ -7,7 +7,7 @@ const cities = [
     'SanJose', 'Oakland', 'SanFrancisco', 'SaltLakeCity', 'Atlanta', 'New York', 'Dallas', 'Houston', 'Fresno', 'Tampa', 'Manhattan', 'Portland', 'Boston', 'Rochester', 'Billings', 'Lebanon', 'Oklahoma City', 'Charlotte', 'Memphis', 'San Antonio', 'Burlington', 'Pasco', 'Rock Springs', 'LosAngeles', 'Austin', 'Boise', 'SanDiego', 'Chicago', 'Denver', 'Las Vegas', 'Phoenix', 'Sanford', 'Springfield', 'Lexington', 'Baltimore', 'Detroit', 'Jackson', 'Reno', 'Newburgh', 'Portland', 'Columbia', 'Brownsville', 'St. George', 'Richmond', 'Seattle', 'Ponce'
 ].sort();
 
-export default function Routeselector() {
+export default function Routeselector({ history }) {
     const [dataInp, setData] = useState([])
     const [startCity, setStartCity] = useState('')
     const [destination, setDestination] = useState('')
@@ -20,13 +20,13 @@ export default function Routeselector() {
     const handleToCity = e => {
         e.preventDefault()
         setFromList(cities.filter(city => city !== e.target.value));
-        setDestination(e.target.value)
+        setDestination(cities.includes(e.target.value) ? e.target.value : "")
         localStorage.setItem("destination", e.target.value)
     }
     const handleFromCity = e => {
         e.preventDefault()
         setToList(cities.filter(city => city !== e.target.value));
-        setStartCity(e.target.value)
+        setStartCity(cities.includes(e.target.value) ? e.target.value : "")
         localStorage.setItem("start", e.target.value)
     }
 
@@ -40,12 +40,13 @@ export default function Routeselector() {
 
     const renderFlightList = (dataInp) => {
         if (dataInp.length > 0) {
-            return (<FlightList value={dataInp} />)
+            return (<FlightList value={dataInp} history={history} />)
         }
     }
 
     const getRoutes = e => {
-        e.preventDefault()
+        e.preventDefault();
+        if(!startCity || !destination) return false;
         apiCall.getRoutesFromApi(startCity, destination, selectedDate)
             .then(response => response.data)
             .then(({ status, flights }) => {
@@ -69,18 +70,17 @@ export default function Routeselector() {
             <div className="form-group inline"></div>
             <div className="main-container">
                 <form className="form-inline" onSubmit={e => getRoutes(e)}>
-                    <select name="ad_account_selected" placeholder="From" data-style="btn-new" class="selectpicker" onChange={e => { handleFromCity(e) }}>
+                    <select value={startCity} name="ad_account_selected" placeholder="From" data-style="btn-new" class="selectpicker" onChange={e => { handleFromCity(e) }}>
                         <option>--From--</option>
                         {renderFromList()}
                     </select>
-                    <select name="ad_account_selected" placeholder="To" data-style="btn-new" class="selectpicker" onChange={e => { handleToCity(e) }} style={{ marginLeft: "10px" }}>
+                    <select value={destination} name="ad_account_selected" placeholder="To" data-style="btn-new" class="selectpicker" onChange={e => { handleToCity(e) }} style={{ marginLeft: "10px" }}>
                         <option>--To--</option>
                         {renderToList()}
                     </select>
                     <input value={selectedDate} min={selectedDate} onChange={e => { handleDate(e) }} type="date" />
                     <input type="submit" className=" btn btn-primary btn-md getRoute" />
                 </form>
-
                 <div>
                     {renderFlightList(dataInp)}
                     {dataNotFound &&

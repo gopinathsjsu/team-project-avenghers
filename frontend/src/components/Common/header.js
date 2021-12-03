@@ -2,9 +2,6 @@ import React from "react";
 import './header.css'
 
 export default function Header(props) {
-  if (sessionStorage.length == 0) {
-    return null
-  }
   return (
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -20,7 +17,7 @@ export default function Header(props) {
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/account">My Account</a></li>
-            <li><a href="/account">Logout</a></li>
+            <li><a href="/logout">Logout</a></li>
           </ul>
         </div>
       </div>
