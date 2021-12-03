@@ -63,16 +63,9 @@ export default function TicketPage({ history }) {
         <div className="container" style={{ "minHeight": "100vh" }}>
             <div>
                 <nav className="mb-4 navbar navbar-expand-lg navbar-dark bg-unique hm-gradient">
-                    <a href="/#" className="navbar-brand Company-Log">UT</a>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-3" aria-controls="navbarSupportedContent-3" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
+    
                     <div className="collapse navbar-collapse" id="navbarSupportedContent-3">
-                        <ul className="navbar-nav ml-auto nav-flex-icons ic">
-                            <li className="nav-item">
-                                <a href="/#" className="nav-link waves-effect waves-light" onClick={e => handleSignOut(e)}>Sign-Out</a>
-                            </li>
-                        </ul>
+              
                     </div>
                 </nav>
             </div>
@@ -104,7 +97,7 @@ export default function TicketPage({ history }) {
                     </div>
                     <footer className="ticket__footer">
                         <p>Transaction-ID</p>
-                        {getIdNumber()}
+                        <p>89PJ12345</p>
                     </footer>
                 </article>
             </div>
