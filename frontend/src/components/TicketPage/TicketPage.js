@@ -70,9 +70,6 @@ export default function TicketPage({ history }) {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent-3">
                         <ul className="navbar-nav ml-auto nav-flex-icons ic">
                             <li className="nav-item">
-                                <a href="/#" className="nav-link waves-effect waves-light" onClick={e => handleBookAgainIcon(e)}>Book Again</a>
-                            </li>
-                            <li className="nav-item">
                                 <a href="/#" className="nav-link waves-effect waves-light" onClick={e => handleSignOut(e)}>Sign-Out</a>
                             </li>
                         </ul>

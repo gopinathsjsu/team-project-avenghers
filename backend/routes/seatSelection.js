@@ -12,7 +12,7 @@ router.post('/',async (req, res) => {
     const price = req.body.price ||0;
 
     const seat = new SeatSelection({
-         name,
+    name,
      gender,
      seatNumber,
     additionalPrice: price,

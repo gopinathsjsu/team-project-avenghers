@@ -55,7 +55,7 @@ export default function Register({ history }) {
                     </div>
                     <div className="form-group2">
                         <label htmlFor="dob">Date of Birth:</label>
-                        <input required id="dob" placeholder="DD-MM-YYYY" type="text" className="form-control sgnUp" onChange={e => handleChangeEvent(e, 'dob')} />
+                        <input required id="dob" type="date" className="form-control sgnUp" onChange={e => handleChangeEvent(e, 'dob')} />
                     </div>
                     <div className="form-check form-check-inline rd">
                         <input required className="form-check-input" type="radio" id="Male" name="gender" value="male" onChange={e => handleChangeEvent(e, 'gender')} />
