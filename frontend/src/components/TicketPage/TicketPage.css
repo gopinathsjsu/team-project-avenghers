@@ -22,7 +22,7 @@ body {
 .ticket {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    max-width: 24rem;
+    max-width: 40rem;
 }
 
 .ticket__header, .ticket__body, .ticket__footer {
