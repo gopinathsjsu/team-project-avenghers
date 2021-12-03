@@ -13,6 +13,7 @@
 # XP Core Values Implemented:
 * Communication
 * Feedback
+# Summary of areas of contributions (for each team member):
 # Technology Stack:
 &ensp; MERN Stack
 * Frontend: ReactJS, BootStrap, MaterialUI 
