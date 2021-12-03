@@ -13,7 +13,7 @@
 # XP Core Values Implemented:
 * Communication
 * Feedback
-# Summary of areas of contributions (for each team member):
+# Summary of contributions (for each team member):
 # Technology Stack:
 &ensp; MERN Stack
 * Frontend: ReactJS, BootStrap, MaterialUI 
@@ -48,13 +48,8 @@ Below listed are the decisions/use cases considered for features provided by the
 # Database Design (Tables):
 * users
 * Airlines
-* Bookings
 * SeatSelection
-* bookings
 * booktravel
-# UML Diagrams:
-## Component Diagram:
-## Deployment Diagram:
 # Steps to start the application:    
 Follow the below steps to get the development environment running:
 
@@ -82,6 +77,7 @@ npm start
 cd backend
 npm run devStart
 ```
+# UML Component Diagram:
 # UI Wireframes:
 # Team's Project Board: 
 # Team's Project Journal:
