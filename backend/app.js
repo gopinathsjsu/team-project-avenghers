@@ -12,7 +12,8 @@ const completeTrip = require("./routes/completeTrip")
 const getUserTrip = require("./routes/getUserTrips")
 const cancelTicket = require("./routes/cancelTicket")
 const getAllBookings = require("./routes/getAllBookings")
-
+const updateAirlines = require("./routes/updateAirlines")
+const addNewAirlines = require("./routes/addNewAirlines")
 const app = express();
 
 const mongoose = require('mongoose');
@@ -94,4 +95,18 @@ app.post('/getAllAirlines', function (req, res) {
         res.send(JSON.stringify(a))
     })
 })
+app.post('/updateAirlines', function (req, res) {
+    let payload = req.body
+    let response = updateAirlines.updateAirlines("updateAirlines",payload);
+    response.then((a,b)=>{
+        res.send(JSON.stringify(a))
+    })
+})
+app.post('/addNewAirlines', function (req, res) {
+    let payload = req.body;
+    let response = addNewAirlines.addNewAirlines("addNewAirlines", payload);
+    response.then((a, b) => {
+        res.send(JSON.stringify(a))
+    })
+ })
 module.exports = app;
