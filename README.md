@@ -41,7 +41,8 @@ Below listed are the decisions/use cases considered for features provided by the
 * Purchase seats
 * Change/Cancel reservations
 #### Admin:
-* Add flight
+* Login
+* Add flights
 * Update flight info
 * View all bookings
 # Database Design (Tables):
