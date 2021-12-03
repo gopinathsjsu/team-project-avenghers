@@ -53,5 +53,34 @@ Below listed are the decisions/use cases considered for features provided by the
 # UML Diagrams:
 ## Component Diagram:
 ## Deployment Diagram:
+# Steps to start the application:    
+Follow the below steps to get the development environment running:
+
+* Clone the repository from GitHub
+```
+git clone https://github.com/gopinathsjsu/team-project-avenghers.git
+```
+* Install node modules
+```
+cd team-project-avenghers
+cd frontend 
+npm install
+cd .. 
+cd backend
+npm install
+```
+Starting both front-end and back-end:
+* Frontend <br />
+```
+cd frontend
+npm start
+```
+* Backend <br />
+```
+cd backend
+npm run devStart
+```
+
+
+
        
-        
