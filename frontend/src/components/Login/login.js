@@ -3,7 +3,7 @@ import { logUserIn } from './loginUtil'
 import './login.css'
 import { FaFacebookF, FaTwitterSquare } from "react-icons/fa";
 
-export default function Login({ history }) {
+export default function Login({ history, setToken }) {
 
     let [userData, setUserData] = useState({})
     let [errorMessage, setErrorMessage] = useState("");
@@ -23,7 +23,8 @@ export default function Login({ history }) {
             .then(response => response.data)
             .then(data => {
                 let { token } = data
-                sessionStorage.setItem('authToken', token)
+                sessionStorage.setItem('authToken', token);
+                setToken(token);
                 history.push('/routes')
             }).catch(e => {
                 setErrorMessage("Login Failed!");

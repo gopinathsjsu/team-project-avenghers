@@ -14,7 +14,7 @@ export default function SeatSelection(props) {
     const [price, setPrice] = useState([]);
     // const [passengers, setPassengers] = useState([])
     // useEffect(()=>{
-    //     let bId = localStorage.getItem('selectedBusId')
+    //     let bId = localStorage.getItem('selectedflightId')
     //     if(bId){
     //         getSeatArray(bId)            
     //     }
