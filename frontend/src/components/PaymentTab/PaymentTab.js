@@ -196,7 +196,7 @@ export default class App extends React.Component {
             for (let i = 0; i < seaArr.length; i++) {
                 count++
             }
-            let total = (seatPrice * count) + tax + miles + this.getAdditionalSeatPrice();
+            let total = (seatPrice * count) + tax - miles + this.getAdditionalSeatPrice();
            
             localStorage.setItem("totalTicketPrice", total)
             return (
