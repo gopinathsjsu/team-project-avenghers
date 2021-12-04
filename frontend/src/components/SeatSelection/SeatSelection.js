@@ -86,7 +86,7 @@ export default function SeatSelection(props) {
     }
 
     const submitSeatDetails = (payload) => {
-        axios.post('http://localhost:8080/seat', {
+        axios.post('http://54.85.78.106:8080/seat', {
             ...payload,
         }).then((res) => {
             console.log('res', res);
