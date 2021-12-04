@@ -28,6 +28,7 @@ export default class Account extends React.Component  {
                         <div className="message">
                             <div className="word1">Uniquely</div>
                             <div className="word2">Safely</div>
+                            <div className="word2">With a Smile</div>
                         
                         </div>
                     </h1>
