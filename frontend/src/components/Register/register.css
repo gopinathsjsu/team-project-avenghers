@@ -235,7 +235,7 @@ input.form-submit {
 
 .link-text {
     padding-bottom: 5px;
-    padding-left: 50%;
+    font-size: 9px;
 }
 
 .signuptext {
@@ -269,4 +269,7 @@ input.form-submit {
 
 .pdding {
     padding-left: 0;
+}
+.fl-r{
+    float: right;
 }
