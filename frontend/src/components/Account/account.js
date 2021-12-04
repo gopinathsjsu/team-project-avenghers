@@ -44,7 +44,7 @@ export default class Account extends React.Component  {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         };
-        fetch('http://localhost:8080/cancelTicket', requestOptions).then(response => response.json())
+        fetch('http://54.85.78.106:8080/cancelTicket', requestOptions).then(response => response.json())
             .then(json => {
                 
                 if(btnClicked == "Cancel"){
@@ -82,7 +82,7 @@ export default class Account extends React.Component  {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         };
-        fetch('http://localhost:8080/getUserTrips', requestOptions).then(response => response.json())
+        fetch('http://54.85.78.106:8080/getUserTrips', requestOptions).then(response => response.json())
             .then(json => {
                 this.setState({
                     tableData: json
