@@ -67,7 +67,7 @@ export default function Routeselector({ history }) {
     }
 
     return (
-        <div className="rdc">
+        <div className="row container App-payment">
             <div className="form-group inline"></div>
             <div className="main-container">
                 <form className="form-inline" onSubmit={e => getRoutes(e)}>

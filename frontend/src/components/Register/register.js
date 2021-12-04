@@ -70,11 +70,11 @@ export default function Register({ history }) {
                         <input required id="password" type="password" className="form-control sgnUp" onChange={e => handleChangeEvent(e, 'password')} />
                     </div>
                     <div className="form-group2">
-                        <input required type="submit" value="submit" className="btn-primary btnn form-submit sub-btn sgnUp" />
+                        <input required type="submit" value="submit" className="btn-primary btn btn-block form-submit sub-btn sgnUp" />
                     </div>
-                    <div>
-                        <small className="form-text text-muted link-text">Already a User?
-                        </small>
+                    <div className="fl-r">
+                        <span className="form-text text-muted link-text">Already a User?
+                        </span>
                         <span className="signuptext"><a href="/#" onClick={(e) => getToSignIn(e)}>Sign-In</a></span>
                     </div>
                 </form>

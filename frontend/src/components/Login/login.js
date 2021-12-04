@@ -67,8 +67,8 @@ export default function Login({ history, setToken }) {
                                             <button type="submit" className="myform-btn">Login</button>
                                         </div>
                                         <div style={{ marginTop: "20px" }}>
-                                            <small className="form-text text-muted signup-text">New User?
-                                            </small>
+                                            <span className="form-text text-muted signup-text">New User?
+                                            </span>
                                             <span className="signUPtext"><a href="/#" onClick={(e) => getToSignUp(e)}>Sign-Up</a></span>
                                         </div>
                                     </form>

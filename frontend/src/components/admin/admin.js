@@ -54,7 +54,8 @@ export default class Account extends React.Component  {
     getAllBookings = (e) => {
         e.preventDefault();
         this.setState({
-            overlay: "overlay"
+            overlay: "overlay",
+            tableData: []
         });
         let tabName = e.target.outerText
         if(tabName == "Airlines"){
@@ -152,7 +153,7 @@ export default class Account extends React.Component  {
                 acc[d.name] = d.value;
                 return acc;
             }, {});
-        console.log(formData);
+        formData.milescovered = parseInt(formData.milescovered)
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -238,8 +239,8 @@ export default class Account extends React.Component  {
                                     <td>{item.skywardMilesUsed}</td>
                                     <td>${item.PriceofTicket}</td>
                                     <td>{item.Tripstatus}</td>
-                                    <td>{item.Tripstatus =="Pending" ? <button type="button" className="btn btn-success btn-block" 
-                                    onClick={e=>this.completeTrip(e,item.bookingId)}>Complete</button>:<span>Completed</span>}</td>
+                                    <td>{item.Tripstatus =="Pending" || item.Tripstatus =="pending"  ? <button type="button" className="btn btn-success btn-block" 
+                                    onClick={e=>this.completeTrip(e,item)}>Complete</button>:<span>Completed</span>}</td>
                                 </tr>
                             ))
                         }
