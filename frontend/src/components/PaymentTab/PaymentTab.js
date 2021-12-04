@@ -119,7 +119,7 @@ export default class App extends React.Component {
                 "bookingId":bookingId,
             })
         };
-        fetch('http://localhost:8080/bookTicket', requestOptions).then(response => response.json())
+        fetch('http://54.159.225.120/bookTicket', requestOptions).then(response => response.json())
             .then(data => {
                 this.setState({ postId: data.id })
                 this.setState({
