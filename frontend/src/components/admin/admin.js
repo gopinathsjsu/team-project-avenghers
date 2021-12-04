@@ -46,7 +46,7 @@ export default class Account extends React.Component  {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         };
-        fetch('http://localhost:8080/markTripAsCompleted', requestOptions).then(response => response.json())
+        fetch('http://54.159.225.120:8080/markTripAsCompleted', requestOptions).then(response => response.json())
             .then(json => {
                 this.getAllBookings(e)
         });
@@ -69,7 +69,7 @@ export default class Account extends React.Component  {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             };
-            fetch('http://localhost:8080/getAllBookings', requestOptions).then(response => response.json())
+            fetch('http://54.159.225.120:8080/getAllBookings', requestOptions).then(response => response.json())
                 .then(json => {
                     this.setState({
                         tableData: json
