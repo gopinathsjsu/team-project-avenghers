@@ -46,7 +46,7 @@ export default class Account extends React.Component  {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         };
-        fetch('http://localhost:8080/markTripAsCompleted', requestOptions).then(response => response.json())
+        fetch('http://54.85.78.106:8080/markTripAsCompleted', requestOptions).then(response => response.json())
             .then(json => {
                 this.getAllBookings(e)
         });
@@ -69,7 +69,7 @@ export default class Account extends React.Component  {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             };
-            fetch('http://localhost:8080/getAllBookings', requestOptions).then(response => response.json())
+            fetch('http://54.85.78.106:8080/getAllBookings', requestOptions).then(response => response.json())
                 .then(json => {
                     this.setState({
                         tableData: json
@@ -96,7 +96,7 @@ export default class Account extends React.Component  {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         };
-        fetch('http://localhost:8080/getAllAirlines', requestOptions).then(response => response.json())
+        fetch('http://54.85.78.106:8080/getAllAirlines', requestOptions).then(response => response.json())
             .then(json => {
                 this.setState({
                     airlinesData: json
@@ -127,7 +127,7 @@ export default class Account extends React.Component  {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         };
-        fetch('http://localhost:8080/updateAirlines', requestOptions).then(response => response.json())
+        fetch('http://54.85.78.106:8080/updateAirlines', requestOptions).then(response => response.json())
             .then(json => {
                this.getAllAirlines("event")
         });
@@ -159,7 +159,7 @@ export default class Account extends React.Component  {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
         };
-        fetch('http://localhost:8080/addNewAirlines', requestOptions).then(response => response.json())
+        fetch('http://54.85.78.106:8080/addNewAirlines', requestOptions).then(response => response.json())
             .then(data => {
                 if(data.insertedId){
                     this.setState({
