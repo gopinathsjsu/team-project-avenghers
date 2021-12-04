@@ -77,8 +77,8 @@ npm start
 cd backend
 npm run devStart
 ```
-# UML Component Diagram:
 # UI Wireframes:
+https://github.com/gopinathsjsu/team-project-avenghers/tree/main/UI%20Wireframes
 # Team's Project Board: 
 # Team's Project Journal:
 # Team's Google Sprint Task Sheet:
