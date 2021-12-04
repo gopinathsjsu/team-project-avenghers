@@ -28,15 +28,16 @@ export default class Account extends React.Component  {
         const decoded = jwt_decode(tok);
         this.setState({ token: decoded.user })
     }
-    cancelTicket = (e,bookingId) => {
+    cancelTicket = (e,item) => {
         e.preventDefault();
+        let btnClicked = e.target.outerText
         this.setState({
             overlay: "overlay"
         });
         e.target.outerText="Cancelling..."
         
         let payload = {
-            "bookingId":bookingId,
+            "bookingId":item.bookingId,
         }
         const requestOptions = {
             method: 'POST',
@@ -45,7 +46,12 @@ export default class Account extends React.Component  {
         };
         fetch('http://localhost:8080/cancelTicket', requestOptions).then(response => response.json())
             .then(json => {
-                this.fetchTravelHistory(e)
+                
+                if(btnClicked == "Cancel"){
+                    this.fetchTravelHistory(e)
+                } else {
+                    window.location.href = "/routes"
+                }
         });
     }
     fetchTravelHistory = (e) => {
@@ -182,7 +188,10 @@ export default class Account extends React.Component  {
                                     <td>{item.date}</td>
                                     <td>{item.skywardMilesUsed}</td>
                                     <td>${item.PriceofTicket}</td>
-                                    <td> <button type="button" className="btn btn-danger btn-block" onClick={e=>this.cancelTicket(e,item.bookingId)}>Cancel</button></td>
+                                    <td> <button type="button" className="btn btn-danger btn-sm" onClick={e=>this.cancelTicket(e,item)}>Cancel</button>
+                                    <span className="p-10"></span>
+                                    <button type="button" className="btn btn-success btn-sm" onClick={e=>this.cancelTicket(e,item)}>Change</button>
+                                    </td>
                                 </tr>
                             ))
                         }

@@ -1,16 +1,21 @@
 import React from 'react'
 import './homepage.css'
-export default function Homepage({ history }) {
-    console.log(history)
-    const enterSite = e => {
-        e.preventDefault()
-        history.push('/login')
+
+
+export default class Account extends React.Component  {
+    state = {
+        number: "",
     }
-    
-    return (
-        <div className='container maint-cnt'>
+    enterSite = e => {
+        e.preventDefault()
+        window.location.href="/login"
+    }
+    render (){
+        
+        return (
+<div className='container maint-cnt'>
             <div className="header-nav">
-                <span className="mytext1"> AVENGHERS </span>
+                <span className="mytext1"> AvengHers </span>
             </div>
             
             <div className="">
@@ -23,12 +28,12 @@ export default function Homepage({ history }) {
                         <div className="message">
                             <div className="word1">Uniquely</div>
                             <div className="word2">Safely</div>
-                            <div className="word3">with a smile</div>
+                        
                         </div>
                     </h1>
                 </div>
 
-                <a href="/#" onClick={e => enterSite(e)} className="mainBtn">
+                <a href="/#" onClick={e => this.enterSite(e)} className="mainBtn">
                     <svg width="277" height="62">
                         <defs>
                             <linearGradient id="grad1">
@@ -42,7 +47,8 @@ export default function Homepage({ history }) {
                 </a>
             </div>
         </div>
-    )
+        )
+    }
 }
 
 
