@@ -98,7 +98,8 @@ npm run devStart
 # UI Wireframes:
 https://github.com/gopinathsjsu/team-project-avenghers/tree/main/UI%20Wireframes
 
-# Team's Project Board: 
+# Team's Project Task Board: 
+https://github.com/gopinathsjsu/team-project-avenghers/blob/main/ProjectDocuments/ProjectTaskBoard.xlsx
 
 # Team's Project Journal:
 https://github.com/gopinathsjsu/team-project-avenghers/blob/main/ProjectDocuments/ProjectJournal.pdf
