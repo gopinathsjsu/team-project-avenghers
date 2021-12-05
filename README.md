@@ -13,6 +13,7 @@
 # XP Core Values Implemented:
 * Communication
 * Feedback
+* Respect
 # Summary of contributions (for each team member):
 **Kesiya Raj (SJSU_ID: 015337387):**
 * Payment using miles
@@ -26,10 +27,9 @@
   * Authenticating as a returning customer/admin (Login)
   * Search for flights
   * Select flights and book travel
+  * Rerouting to seat selection & purchase page 
 * UI Wireframes 
 * Project Documentation
-
-
 
 **Nancy Saxena (SJSU_ID: 014554891):**
 * Frontend for Cancel/change reservation 
