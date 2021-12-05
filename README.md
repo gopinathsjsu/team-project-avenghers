@@ -14,6 +14,19 @@
 * Communication
 * Feedback
 # Summary of contributions (for each team member):
+**Kesiya Raj (SJSU_ID: 015337387):**
+* Payment using miles
+* Reward miles management
+* User account (where user can view past and current trips)
+* Backend for cancel/update reservation
+**Nancy Saxena (SJSU_ID: 014554891):**
+
+**Vasudha Pasumarthi (SJSU_ID: 015328417):**
+* Ticket page 
+* Payment using card
+* Seat selection 
+* Seat purchase
+* home page
 # Technology Stack:
 &ensp; MERN Stack
 * Frontend: ReactJS, BootStrap, MaterialUI 
@@ -90,6 +103,4 @@ https://github.com/gopinathsjsu/team-project-avenghers/blob/main/Project%20Docum
 Sprint Task sheet and Burndown charts included:
 
 https://docs.google.com/spreadsheets/d/1rziCTSVE-TOeh3UK-1INmpe5DEqMqLSNpSMqdoxzE1A/edit#gid=1013035299
-
-
        
