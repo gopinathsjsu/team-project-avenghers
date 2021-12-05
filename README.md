@@ -22,7 +22,7 @@
 * Authentication: PassportJS 
 * Cloud: Amazon Web Services (EC2 Cluster) 
 # Architecture Diagram:
-![alt text](https://github.com/gopinathsjsu/team-project-avenghers/blob/Kesiya/images/Architecture_Dia.jpeg?raw=true)
+![alt text](https://github.com/gopinathsjsu/team-project-avenghers/blob/Kesiya/ProjectDocuments/Architecture_Diagram.jpeg?raw=true)
 # Design Decisions:
 ## Architecture-level:
 * MERN stack.
@@ -46,6 +46,7 @@ Below listed are the decisions/use cases considered for features provided by the
 * Update flight info
 * View all bookings
 # Database Design (Tables):
+https://github.com/gopinathsjsu/team-project-avenghers/tree/main/Project%20Documents/DB_Tables
 * users
 * Airlines
 * SeatSelection
