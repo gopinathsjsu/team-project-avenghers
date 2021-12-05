@@ -83,6 +83,7 @@ https://github.com/gopinathsjsu/team-project-avenghers/tree/main/UI%20Wireframes
 # Team's Project Board: 
 
 # Team's Project Journal:
+https://github.com/gopinathsjsu/team-project-avenghers/blob/main/Project%20Documents/ProjectJournal.pdf
 
 # Team's Google Sprint Task Sheet:
 Sprint Task sheet and Burndown charts included:
