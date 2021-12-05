@@ -20,6 +20,17 @@
 * User account (where user can view past and current trips)
 * Backend for cancel/update reservation
 
+**Kiran Bala Devineni (SJSU_ID: 015218866):**
+* Frontend, backend and database design for,
+  * Enrolling as a new customer (Register/Sign-up)
+  * Authenticating as a returning customer/admin (Login)
+  * Search for flights
+  * Select flights and book travel
+* UI Wireframes 
+* Project Documentation
+
+
+
 **Nancy Saxena (SJSU_ID: 014554891):**
 * Frontend for Cancel/change reservation 
 * Admin part- update, cancel & edit flights 
