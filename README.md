@@ -63,7 +63,7 @@ Below listed are the decisions/use cases considered for features provided by the
 * Update flight info
 * View all bookings
 # Database Design (Tables):
-https://github.com/gopinathsjsu/team-project-avenghers/tree/main/Project%20Documents/DB_Tables
+https://github.com/gopinathsjsu/team-project-avenghers/tree/main/ProjectDocuments/DB_Tables
 * users
 * Airlines
 * SeatSelection
