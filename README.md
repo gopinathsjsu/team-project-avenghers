@@ -22,7 +22,7 @@
 * Authentication: PassportJS 
 * Cloud: Amazon Web Services (EC2 Cluster) 
 # Architecture Diagram:
-![alt text](https://github.com/gopinathsjsu/team-project-avenghers/blob/Kesiya/images/Architecture_Dia.jpeg?raw=true)
+![alt text](https://github.com/gopinathsjsu/team-project-avenghers/blob/Kesiya/Project_Documents/Architecture_Diagram.jpeg?raw=true)
 # Design Decisions:
 ## Architecture-level:
 * MERN stack.
