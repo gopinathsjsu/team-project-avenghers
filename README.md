@@ -19,7 +19,11 @@
 * Reward miles management
 * User account (where user can view past and current trips)
 * Backend for cancel/update reservation
+
 **Nancy Saxena (SJSU_ID: 014554891):**
+* Frontend for Cancel/change reservation 
+* Admin part- update, cancel & edit flights 
+* Deployment
 
 **Vasudha Pasumarthi (SJSU_ID: 015328417):**
 * Ticket page 
