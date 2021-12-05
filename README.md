@@ -105,7 +105,7 @@ https://github.com/gopinathsjsu/team-project-avenghers/blob/main/ProjectDocument
 https://github.com/gopinathsjsu/team-project-avenghers/blob/main/ProjectDocuments/ProjectJournal.pdf
 
 # Team's Google Sprint Task Sheet:
-Sprint Task sheet and Burndown charts included:
+Sprint Task sheet and Burndown charts included:<br />
 
 https://docs.google.com/spreadsheets/d/1rziCTSVE-TOeh3UK-1INmpe5DEqMqLSNpSMqdoxzE1A/edit#gid=1013035299
        
