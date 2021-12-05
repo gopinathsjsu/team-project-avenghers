@@ -89,9 +89,7 @@ https://github.com/gopinathsjsu/team-project-avenghers/blob/main/Project%20Docum
 # Team's Google Sprint Task Sheet:
 Sprint Task sheet and Burndown charts included:
 
-https://docs.google.com/spreadsheets/d/1C1YALcOjJLBOaJvNai-YzBikbSYqYpE8/edit#gid=1733039311
-
-
+https://docs.google.com/spreadsheets/d/1rziCTSVE-TOeh3UK-1INmpe5DEqMqLSNpSMqdoxzE1A/edit#gid=1013035299
 
 
        
